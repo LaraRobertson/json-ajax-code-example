@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<title>Example</title>
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="mobile-web-app-capable" content="yes">
+
+	<!--<link rel="stylesheet" href="stylesheets/foundation.min.css">-->
+    <link rel="stylesheet" href="stylesheets/foundation.css">
+    <link rel="stylesheet" href="stylesheets/swiper.css">
+	<link rel="stylesheet" href="stylesheets/master.css">
+
+  <!-- <link rel="stylesheet/less" href="stylesheets/master.less" /> -->
+
+	<!-- Script Includes: Vendor -->
+	<!--<script src="http://10.1.10.161:8080/target/target-script-min.js"></script>-->
+	<script src="js/vendor.js"></script>
+	<script src="js/socket.io.js"></script>
+	<script src="js/foundation/foundation.min.js"></script>
+	<script src="js/foundation/foundation.reveal.js"></script>
+    <script src="js/foundation/foundation.accordion.js"></script>
+    <script src="js/foundation/foundation.tab.js"></script>
+<body>
+
+	<!-- Project Header -->
+  <div class="site-wrapper">
+      <header>
+          <div class="row">
+              <div class="columns small-9">
+                  <div class="button menu" data-trigger="nav">
+                      <div>
+                          <i class="icon-list"></i>
+                      </div>
+                  </div>
+                  <div class="branding" onclick="riot.route('pgs/home/home.html')"; return false;">
+                  </div>
+              </div>
+              <div class="button right refresh columns small-3">
+                  <!--<div class="button" data-nav="search" data-url="pgs/search/search-results.html" data-role="ajax">-->
+                      <!--<i class="icon-search"></i>-->
+                  <!--</div>-->
+                  <opui-launch keyword="sync">
+                      <div if="{platform != 'opux' }" class="logout-btn" onclick="{launch}">
+                          <div>
+                              <i class="icon-refresh"></i>
+                          </div>
+                      </div>
+                  </opui-launch>
+                  <!--<div class="small button logout" data-url="cellcast://action/logout" data-role="cellcast">-->
+                      <!--<p>Logout</p> <i class="icon-input"></i>-->
+                  <!--</div>-->
+                  <opui-launch keyword="logout" confirm="Are you sure you want to Logout?">
+                      <div if="{platform === 'opux' }" class="logout-btn"  onclick="{launch}">
+                          <div>
+                              <p>Logout </p> <i class="icon-export"></i>
+                          </div>
+                      </div>
+                  </opui-launch>
+              </div>
+           </div>
+          <div class="row">
+              <div class="columns small-12 welcome-bar">
+                  <div class="row">
+                      <div class="user-info columns small-8">
+                        <p>Welcome, <opui-userinfo><span class="login-name">{info.user_first_name} {info.user_last_name}</span></opui-userinfo>. <opui-opportal-constant keyword="lastLogin"><span if="{platform == 'opux' }" ><opui-phrase key="last_login" def="Last Login:">Last Login</opui-phrase>
+                            <span class="lastLogin">{constant}</span></opui-opportal-constant></p>
+                      </div>
+                      <div class="LogoutLinks columns small-4">
+                          <opui-launch keyword="myProfile" windowName="My Profile" width="575" height="650">
+                              <div if="{platform == 'opux' }" class="link inline-div" onclick="{launch}">
+                                  <i class="icon-vcard"></i>
+                                  <div class="text"><opui-phrase key="my_profile" def="My Profile">My Profile</opui-phrase></div>
+                              </div>
+                           </opui-launch>
+                          <!-- &nbsp; | &nbsp; -->
+                         <opui-launch keyword="showHelp" windowName="My Profile" width="575" height="700">
+                           <div if="{platform == 'opux' }" class="link inline-div" onclick="{launch}">
+                                <i class="icon-help"></i>
+                                <div class="text"><opui-phrase key="general_help" def="Help">Help</opui-phrase></div>
+                            </div>
+                          </opui-launch>
+                          <!--  &nbsp; | &nbsp;
+                           <a href="javascript: showLogout();" title="Logout of the Portal">Logout</a> -->
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </header>
+
+    <!-- Wrap Contents That Will Be Moved As Navigation Is Exposed -->
+    <div id="wrapper-container" data-role="wrapper-container">
+
+
+      <!-- Project Content -->
+      <div id="wrapper-content" data-role="wrapper-content">
+        <!--<section id="load-content" attr="scrollMe" data-role="load-content">-->
+        <opui-viewloader id="load-content" style="display:block;">
+          <div class="load-wrapper">
+            <div class="loader" data-key="loading">Loading...</div>
+          </div>
+          <center>
+            <h2>Loading</h2>
+          </center>
+        </opui-viewloader>
+        <!--</section>-->
+      </div>
+
+      <!-- Project Footer -->
+      <opui-footer>
+        <footer class="{showfooter:showfooter}">
+            <div class="text-block">
+                <div if="{platform == 'opux' }" class="bottomLogo"></div>
+                <p id="copyright">Copyright</p>
+            </div>
+        </footer>
+      </opui-footer>
+    </div>
+
+	<!-- Project Navigation -->
+	<div id="wrapper-navigation" data-role="wrapper-navigation">
+		<!--<div id="load-navigation" attr="scrollMe" data-role="load-navigation">
+		</div>-->
+        <!--<div data-load="pgs/navigation/navigation.html">-->
+        <!--</div>-->
+		<opui-menu>
+      <!--<opui-userinfo>-->
+        <!--<div class="user-info">-->
+          <!--<p>Signed in as:</p>-->
+          <!--<img src="{info.avatar}" alt=""/>-->
+          <!--<h3>{info.user_name}</h3>-->
+        <!--</div>-->
+      <!--</opui-userinfo>-->
+			<ul class="nav-list">
+				<li each={items} class="selectable" onclick={parent.navigate} data-nav={navigation-indicator}>
+					<div class="=">
+						<div class="icon-block">
+							<i class="icon-{icon}"></i>
+						</div>
+						<div class="text-block">
+							<p><opui-phrase key="{key}" def="{title}"></opui-phrase></p>
+						</div>
+					</div>
+				</li>
+                <!--<li class="selectable" data-nav="utilities" riot-tag="opui-launch" keyword="forumList" class="columns small-6" >-->
+                    <!--<div class="=" onclick="{launch}">-->
+                        <!--<div class="icon-block">-->
+                            <!--<i class="icon-chat"></i>-->
+                        <!--</div>-->
+                        <!--<div class="text-block">-->
+                            <!--<p><opui-phrase key="forums" def="Forums"><span>Forums</span></opui-phrase></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <li class="message">
+                    <div>
+                        <div class="icon-block" style="padding-top: 11px;">
+                            <i class="icon-mail"></i>
+                        </div>
+                        <div class="text-block" style="padding-bottom: 3px;">
+                            <p>Messages</p>
+                        </div>
+                </li>
+                <li class="messages" onclick="riot.route('pgs/messages/announcements.html')"; return false;"><i class="icon-caret-right arrow"></i>Announcements<span id="anmtcount"></span></li>
+                <li class="messages last" onclick="riot.route('pgs/messages/notifications.html')"; return false;" ><i class="icon-caret-right arrow"></i>Notifications<span id="ntfycount"></span></li>
+
+
+                <!--<li class="selectable" data-nav="utilities" riot-tag="opui-launch" keyword="myStatus" class="columns small-6" >-->
+                    <!--<div class="=" onclick="{launch}">-->
+                        <!--<div class="icon-block">-->
+                            <!--<i class="icon-profile"></i>-->
+                        <!--</div>-->
+                        <!--<div class="text-block">-->
+                            <!--<p><opui-phrase key="my_status" def="My Status"><span>My Status</span></opui-phrase></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li class="selectable" data-nav="utilities" riot-tag="opui-launch" keyword="content" type="course" id="15080" details="false" class="columns small-6" >-->
+                    <!--<div class="=" onclick="{launch}">-->
+                        <!--<div class="icon-block">-->
+                            <!--<i class="icon-help"></i>-->
+                        <!--</div>-->
+                        <!--<div class="text-block">-->
+                            <!--<p><opui-phrase key="faqs" def="FAQs"><span>FAQs</span></opui-phrase></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li  class="selectable" data-nav="toolbox" data-url="pgs/legend/legend.html">-->
+                    <!--<div class="=">-->
+                        <!--<div class="icon-block">-->
+                            <!--<i class="icon-info"></i>-->
+                        <!--</div>-->
+                        <!--<div class="text-block">-->
+                            <!--<p><opui-phrase key="legend" def="Legend"><span>Legend</span></opui-phrase></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li if="{platform != 'opux' }" class="selectable" data-nav="utilities" data-url="pgs/utilities/selections.html">-->
+                    <!--<div class="=">-->
+                        <!--<div class="icon-block">-->
+                            <!--<i class="icon-cog"></i>-->
+                        <!--</div>-->
+                        <!--<div class="text-block">-->
+                            <!--<p><opui-phrase key="utilities" def="Utilities"><span>Utilities</span></opui-phrase></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+
+                <!--<li class="selectable" data-nav="utilities" riot-tag="opui-launch" keyword="opdoc" class="columns small-6" >-->
+                    <!--<div class="=" onclick="{launch}">-->
+                        <!--<div class="icon-block">-->
+                            <!--<i class="icon-drawer"></i>-->
+                        <!--</div>-->
+                        <!--<div class="text-block">-->
+                            <!--<p><opui-phrase key="document _library" def="Document Library"><span>Document Library</span></opui-phrase></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+				<!--<li  if="{user_role === 'RM' || user_role === 'GM' || user_role === 'SA' || user_role === 'RA'}" class="selectable" data-title="Performance Manager" data-nav="pm" riot-tag="opui-launch" keyword="oppm" >-->
+					<!--<div onclick="{launch}">-->
+						<!--<div class="icon-block">-->
+							<!--<i class="icon-clipboard"></i>-->
+						<!--</div>-->
+						<!--<div class="text-block">-->
+							<!--<p><opui-phrase key="performance_manager" def="Performance Manager"></opui-phrase></p>-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</li>-->
+                <!--<li  if="{user_role === 'CA' || user_role === 'CC' || user_role === 'SA' || user_role === 'RA'}" class="selectable" data-title="Performance Manager" riot-tag="opui-launch" keyword="opcm"  data-nav="pm">-->
+                    <!--<div onclick="{launch}">-->
+                        <!--<div class="icon-block">-->
+                            <!--<i class="icon-briefcase"></i>-->
+                        <!--</div>-->
+                        <!--<div class="text-block">-->
+                            <!--<p><opui-phrase key="course_manager" def="Course Manager"></opui-phrase></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<opui-opportal-constant keyword="eventInstructor">-->
+                <!--<li class="selectable" if="{constant === 'isInstructor' || constant === 'offline'}" data-nav="utilities" riot-tag="opui-launch" keyword="opdoc" class="columns small-6" >-->
+                    <!--<div class="=" onclick="{launch}">-->
+                        <!--<div class="icon-block">-->
+                            <!--<i class="icon-calendar-2"></i>-->
+                        <!--</div>-->
+                        <!--<div class="text-block">-->
+                            <!--<p><opui-phrase key="event_attendance" def="Event Attendance"><span>Event Attendance</span></opui-phrase></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--</opui-opportal-constant>-->
+			</ul>
+		</opui-menu>
+
+	</div>
+      <opui-back>
+          <div id="back-btn" if="{show}" onclick="{goback}">
+              <div>
+                  <div class="icon-block">
+                      <i class="icon-chevron-left"></i>
+                  </div>
+                  <div class="text-block">
+                      <p class="title"></p>
+                  </div>
+              </div>
+          </div>
+
+      </opui-back>
+  </div>
+
+	<opui-modal></opui-modal>
+
+	<opui-modal id="legend" header="Legend" override>
+		<div class="modal {show:show}" id="modal-one" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-header">
+					<h2>Legend</h2>
+					<a href="" class="btn-close" aria-hidden="true" onclick="{close}">×</a> <!--CHANGED TO "#close"-->
+				</div>
+				<div class="modal-body">
+                    <ul>
+                        <li><i class="icon-not_attempted"></i>Not Started</li>
+                        <li><i class="icon-incomplete"></i>In Progress</li>
+                        <li><i class="icon-complete"></i>Complete</li>
+                        <li><i class="icon-file-3"></i>Test Associated</li>
+                        <li><i class="icon-failed"></i>Failed</li>
+
+                    </ul>
+				</div>
+				<div class="modal-footer">
+					<a href="" class="btn" onclick="{close}">Close legend</a>  <!--CHANGED TO "#close"-->
+				</div>
+			</div>
+		</div>
+	</opui-modal>
+
+	<opui-toast position="topright"></opui-toast>
+
+    <!--not using handlebars anymore-->
+	<!--<div data-role="templates" style="display:none;" data-load="pgs/templates/templates.html"></div>-->
+
+	<script>
+		var translate = {
+
+		}
+	</script>
+
+
+
+
+	<!-- Script Includes: OPUI -->
+	<!--<script type="text/javascript" src="js/opui/AIRIntrospector.js"></script>-->
+
+	<!--<script src="js/charts/Chart.Core.js"></script>-->
+	<!--<script src="js/charts/Chart.PolarMax.js"></script>-->
+    <script src="js/swiper.min-3.1.7.js"></script>
+    <script src="js/opui.js"></script>
+	<script src="tags/opui.tags.js"></script>
+    <script src="js/app.js"></script>
+
+
+    <!-- Project Specific Scripts -->
+	<script>
+
+		$(document).ready(function(){
+
+//			$(document).foundation();
+
+			// Adjust for width being reported incorrectly on the iPad -->
+			var width = $(document).width();
+			if(width == 1032){
+				$('header').css('padding-right', '8px');
+			}
+		});
+	</script>
+</body>
+</html>
