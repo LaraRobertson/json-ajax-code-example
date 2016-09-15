@@ -1,0 +1,58 @@
+<article >
+	<div class="row">
+		<div class="columns medium-12">
+			<ul class="list" style="padding-top:25px;">
+				<li class="page-heading">
+					<p >{{i18n 'search_academy' 'Search'}}</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="columns medium-12">
+			<ul class="list" >
+				<li class="search-box">
+					<div class="input-block"> 
+					<form>
+		                <input id="search-term" data-role="search-term" type="search" name="search_term" value="Enter Term"   
+								onfocus="if (this.value == 'Enter Term') {this.value = '';} rePos(this);"   
+								onblur="if (this.value == '') {this.value = 'Enter Term';}" class="stop"/>
+						</input>
+					</form>
+		            </div> 
+		            <!--<div data-role="search-button" class="icon-block" > -->
+		                <!--<i class="icon-search" style="color: #333"></i> -->
+		            <!--</div>-->
+
+					<div data-role="search-button" class="icon-block">
+						<button class="search-button">{{i18n 'main_search' 'Search'}}</button>
+					</div>
+                    <div data-role="search-clear" class="icon-block" >
+                        <i class="icon-remove" style="color: #333"></i>
+                    </div>
+				</li>
+
+				<ul data-role="search-results" data-collection="catalog" data-template="#catalog_tmpl" data-itemtemplate="null">
+				</ul>
+			</ul>
+		</div>
+	</div>
+
+	
+
+	<script>
+		// Fix for Search page scrolling up and getting stuck on iPad -->
+		function rePos(sfield){
+			if(platform == 'ios'){
+				window.scrollTo(0, '50px');				
+			} else {
+				return true;
+			}
+		}
+	</script>
+
+	<script>
+        $( "footer" ).hide();
+    </script>
+</article>

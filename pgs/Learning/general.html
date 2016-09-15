@@ -1,0 +1,47 @@
+<opui-page back="pgs/learning/selections.html">
+<article style="padding-top:25px;">
+    <div class="row">
+        <div class="columns medium-12">
+            <ul class="list" >
+                <li class="page-heading info">
+                    <p>Learning > General</p>
+                    <opui-back back="{back}">
+                        <div class="header-back" onclick="{goback}">
+                            <div class="icon-block"><i class="icon-chevron-left"></i></div>
+                            <div>Back</div>
+                        </div>
+                    </opui-back>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="columns medium-12">
+            <ul class="list" style="padding-top:25px;">
+                <li class="selectable listings" data-backurl="pgs/learning/general.html" data-title="ELearning > General > App Tips"  data-rule="exclusive" data-url="pgs/assignments/tags.html" data-tags="General-App_Tips" data-nav="Additional Resources">
+                    <div class="text-block">
+                        <p class="title">App Tips</p>
+                    </div>
+                    <div class="icon-block">
+                        <i class="icon-chevron-right"></i>
+                    </div>
+                </li>
+                    <li class="selectable listings" data-backurl="pgs/learning/general.html"  data-title="ELearning > General > Educational Grants"  data-rule="exclusive" data-url="pgs/assignments/tags.html" data-tags="General-Educational_Grants" data-nav="Additional Resources">
+                    <div class="text-block">
+                        <p class="title">Educational Grants</p>
+                    </div>
+                    <div class="icon-block">
+                        <i class="icon-chevron-right"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $( "footer" ).hide();
+    </script>
+
+</article>
+</opui-page>

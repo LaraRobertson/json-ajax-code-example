@@ -1,0 +1,304 @@
+<opui-page foundation="on">
+    <article>
+        <div class="row">
+            <div class="columns medium-12">
+                <ul class="list" >
+                    <li class="page-heading required info">
+                        <p >{{i18n 'assignments' 'Assignments'}}</p>
+                        <div onclick="opui.events.publish('modal', 'legend'); return false;" class="icon-block">
+                            <i class="icon-info" style="margin-right: 12px; font-size: 30px; color: #fff;"></i>
+                        </div>
+                            <!-- <a href="#" data-reveal-id="legend-page"><i class="icon-info" style="margin-right: 12px; font-size: 30px; color: #fff;"></i></a> -->
+                        <opui-back back="{back}">
+                            <div class="header-back" onclick="{goback}">
+                                <div class="icon-block"><i class="icon-chevron-left"></i></div>
+                                <div>Back</div>
+                            </div>
+                        </opui-back>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns medium-12 small-12">
+                <foundation-tabs>
+                    <ul id="filter-buttons" class="tabs" data-tab>
+                        <li class="tab-title active">
+                            <a href="#panel1"><div><i class="icon-not_attempted"></i>Not Started</div></a>
+                        </li>
+                        <li class="tab-title">
+                            <a href="#panel2"><div><i class="icon-incomplete"></i>In Progress</div></a>
+                        </li>
+                        <li class="tab-title">
+                            <a href="#panel3"><div><i class="icon-complete"></i>Complete</div></a>
+                        </li>
+                    </ul>
+                    <div class="tabs-content assignmentListings">
+                        <div class="content active" id="panel1">
+                                <ul riot-tag="opui-assignments" collection="assignments" status="not-attempted" class="accordion list limit-width break" data-accordion>
+                                    <li each="{item in items}" class="{skillprofile: item.assignType == 'skillprofile'} accordion-navigation listings imageBlock" id="{item.id}" type="{item.assignType}" riot-tag="opui-launch" keyword="content">
+                                        <div class="img-block" keyword="content" id="{item.id}" type="{item.assignType}">
+                                            <img if = "{item.image != ''}" src="{opui.config.imgpath + item.image}" alt=""/>
+                                            <img if = "{item.image == ''}" src="{opui.config.imgpath}img/thumbs/sample.png" alt="sample"/>
+                                        </div>
+                                        <div class="text-block">
+                                            <p class="title"  >
+                                                <raw content="{item.name}"></raw>
+
+                                            </p>
+                                            <p class="desc" data-tmpl="description">
+                                                <raw content="{item.description}"></raw>
+                                            </p>
+                                        </div>
+                                        <div class="status-block"><span if = "{item.duration_secs > 0}">{item.duration_secs/60} min</div>
+                                        <div class="icon-block">
+                                            <span if="{item.assignType != 'skillprofile'}">
+                                                <i data-tmpl="status-completion" class="icon-status-{item.status}"></i>
+                                                <i data-tmpl="status-test"></i>
+                                            </span>
+                                        </div>
+                                        <!--<div class="assignLink">-->
+                                        <!--<div class="icon-block">-->
+                                        <!--<p class="left" if="{item.status === 4}"><i class="icon-incomplete"></i></p>-->
+                                        <!--<p class="left" if="{item.status === 6}"><i class="icon-not_attempted"></i></p>-->
+                                        <!--<i data-tmpl="status-test"></i>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <a href="#assignment{item.id}" if="{item.assignType == 'skillprofile'}" class="actionBtn selectable">
+                                            <div class="icon-block accordion-icon">
+                                                <i class="icon-plus accordion-choice"></i>
+                                                <i class="icon-minus accordion-choice"></i>
+                                            </div>
+                                        </a>
+                                        <div if="{item.assignType != 'skillprofile'}" class="actionBtn selectable" data-id="{item.id}" data-type="{item.assignType}" onclick="{launch}">Browse</div>
+                                        <!--<div class="icon-block" onclick="{launch}">-->
+                                        <!--<i class="icon-export"></i>-->
+                                        <!--</div>-->
+                                        <div if="{item.assignType == 'skillprofile'}"  class="progress-block">
+                                            <div class="progress-bar-holder">
+                                                <div class="progress-bar" style="width:{progress}">&nbsp;&nbsp;{progress}</div>
+                                            </div>
+                                        </div>
+                                        <div  if="{item.assignType == 'skillprofile'}" id="assignment{item.id}" class="content accordionList subItems">
+                                            <ul>
+                                                <li riot-tag="opui-launch" keyword="content" onclick="{launch}" each="{subitem in item.items}" class="selectable" id="{subitem.id}" type="{subitem.assignType}">
+                                                    <div>
+                                                        <div class="img-block">
+                                                            <img if = "{subitem.image != ''}" src="{opui.config.imgpath + subitem.image}" alt=""/>
+                                                            <img if = "{subitem.image == ''}" src="{opui.config.imgpath}img/thumbs/sample.png" alt="sample"/>
+                                                        </div>
+                                                        <div class="text-block">
+                                                            <p class="title">
+                                                                <raw content="{subitem.name}"></raw>
+                                                            </p>
+                                                            <p class="desc">
+                                                                <raw content="{subitem.description}"></raw>
+                                                            </p>
+                                                        </div>
+                                                        <div class="status-block"><span if = "{subitem.duration_secs > 0}">{subitem.duration_secs/60} min</div>
+                                                        <div class="icon-block">
+                                                            <i data-tmpl="status-completion" class="icon-status-{subitem.status}"></i>
+                                                            <i data-tmpl="status-test"></i>
+                                                        </div>
+                                                        <div class="actionBtn selectable" data-id="{item.id}" data-type="{item.assignType}" onclick="{launch}">Launch</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li if="{empty}" data-tmpl="no-items">
+                                        <div class="text-block">
+                                            <p class="title">There are no items of this type available at this time.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            <li if="{empty}" data-tmpl="no-items">
+                                <div class="text-block">
+                                    <p class="title">There are no items of this type available at this time.</p>
+                                </div>
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="content" id="panel2">
+                                <ul riot-tag="opui-assignments" collection="assignments" status="incomplete" class="accordion list limit-width break" data-accordion>
+                                    <li each="{item in items}" class="{skillprofile: item.assignType == 'skillprofile'} accordion-navigation listings imageBlock" id="{item.id}" type="{item.assignType}" riot-tag="opui-launch" keyword="content">
+                                        <div class="img-block" keyword="content" id="{item.id}" type="{item.assignType}">
+                                            <img if = "{item.image != ''}" src="{opui.config.imgpath + item.image}" alt=""/>
+                                            <img if = "{item.image == ''}" src="{opui.config.imgpath}img/thumbs/sample.png" alt="sample"/>
+                                        </div>
+                                        <div class="text-block">
+                                            <p class="title"  >
+                                                <raw content="{item.name}"></raw>
+
+                                            </p>
+                                            <p class="desc" data-tmpl="description">
+                                                <raw content="{item.description}"></raw>
+                                            </p>
+                                        </div>
+                                        <div class="status-block"><span if = "{item.duration_secs > 0}">{item.duration_secs/60} min</div>
+                                        <div class="icon-block">
+                                            <span if="{item.assignType != 'skillprofile'}">
+                                                <i data-tmpl="status-completion" class="icon-status-{item.status}"></i>
+                                                <i data-tmpl="status-test"></i>
+                                            </span>
+                                        </div>
+                                        <!--<div class="assignLink">-->
+                                        <!--<div class="icon-block">-->
+                                        <!--<p class="left" if="{item.status === 4}"><i class="icon-incomplete"></i></p>-->
+                                        <!--<p class="left" if="{item.status === 6}"><i class="icon-not_attempted"></i></p>-->
+                                        <!--<i data-tmpl="status-test"></i>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <a href="#assignment{item.id}" if="{item.assignType == 'skillprofile'}" class="actionBtn selectable">
+                                            <div class="icon-block accordion-icon">
+                                                <i class="icon-plus accordion-choice"></i>
+                                                <i class="icon-minus accordion-choice"></i>
+                                            </div>
+                                        </a>
+                                        <div if="{item.assignType != 'skillprofile'}" class="actionBtn selectable" data-id="{item.id}" data-type="{item.assignType}" onclick="{launch}">Browse</div>
+                                        <!--<div class="icon-block" onclick="{launch}">-->
+                                        <!--<i class="icon-export"></i>-->
+                                        <!--</div>-->
+                                        <div if="{item.assignType == 'skillprofile'}"  class="progress-block">
+                                            <div class="progress-bar-holder">
+                                                <div class="progress-bar" style="width:{progress}">&nbsp;&nbsp;{progress}</div>
+                                            </div>
+                                        </div>
+                                        <div  if="{item.assignType == 'skillprofile'}" id="assignment{item.id}" class="content accordionList subItems">
+                                            <ul>
+                                                <li riot-tag="opui-launch" keyword="content" onclick="{launch}" each="{subitem in item.items}" class="selectable" id="{subitem.id}" type="{subitem.assignType}">
+                                                    <div>
+                                                        <div class="img-block">
+                                                            <img if = "{subitem.image != ''}" src="{opui.config.imgpath + subitem.image}" alt=""/>
+                                                            <img if = "{subitem.image == ''}" src="{opui.config.imgpath}img/thumbs/sample.png" alt="sample"/>
+                                                        </div>
+                                                        <div class="text-block">
+                                                            <p class="title">
+                                                                <raw content="{subitem.name}"></raw>
+                                                            </p>
+                                                            <p class="desc">
+                                                                <raw content="{subitem.description}"></raw>
+                                                            </p>
+                                                        </div>
+                                                        <div class="status-block"><span if = "{subitem.duration_secs > 0}">{subitem.duration_secs/60} min</div>
+                                                        <div class="icon-block">
+                                                            <i data-tmpl="status-completion" class="icon-status-{subitem.status}"></i>
+                                                            <i data-tmpl="status-test"></i>
+                                                        </div>
+                                                        <div class="actionBtn selectable" data-id="{item.id}" data-type="{item.assignType}" onclick="{launch}">Launch</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li if="{empty}" data-tmpl="no-items">
+                                        <div class="text-block">
+                                            <p class="title">There are no items of this type available at this time.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            <li if="{empty}" data-tmpl="no-items">
+                                <div class="text-block">
+                                    <p class="title">There are no items of this type available at this time.</p>
+                                </div>
+                            </li>
+                                </ul>
+                        </div>
+                        <div class="content" id="panel3">
+                                <ul riot-tag="opui-assignments" collection="assignments" status="complete" class="accordion list limit-width break" data-accordion>
+                                    <li each="{item in items}" class="{skillprofile: item.assignType == 'skillprofile'} accordion-navigation listings imageBlock" id="{item.id}" type="{item.assignType}" riot-tag="opui-launch" keyword="content">
+                                        <div class="img-block" keyword="content" id="{item.id}" type="{item.assignType}">
+                                            <img if = "{item.image != ''}" src="{opui.config.imgpath + item.image}" alt=""/>
+                                            <img if = "{item.image == ''}" src="{opui.config.imgpath}img/thumbs/sample.png" alt="sample"/>
+                                        </div>
+                                        <div class="text-block">
+                                            <p class="title"  >
+                                                <raw content="{item.name}"></raw>
+
+                                            </p>
+                                            <p class="desc" data-tmpl="description">
+                                                <raw content="{item.description}"></raw>
+                                            </p>
+                                        </div>
+                                        <div class="status-block"><span if = "{item.duration_secs > 0}">{item.duration_secs/60} min</div>
+                                        <div class="icon-block">
+                                            <span if="{item.assignType != 'skillprofile'}">
+                                                <i data-tmpl="status-completion" class="icon-status-{item.status}"></i>
+                                                <i data-tmpl="status-test"></i>
+                                            </span>
+                                        </div>
+                                        <!--<div class="assignLink">-->
+                                        <!--<div class="icon-block">-->
+                                        <!--<p class="left" if="{item.status === 4}"><i class="icon-incomplete"></i></p>-->
+                                        <!--<p class="left" if="{item.status === 6}"><i class="icon-not_attempted"></i></p>-->
+                                        <!--<i data-tmpl="status-test"></i>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <a href="#assignment{item.id}" if="{item.assignType == 'skillprofile'}" class="actionBtn selectable">
+                                            <div class="icon-block accordion-icon">
+                                                    <i class="icon-plus accordion-choice"></i>
+                                                    <i class="icon-minus accordion-choice"></i>
+                                            </div>
+                                        </a>
+                                        <div if="{item.assignType != 'skillprofile'}" class="actionBtn selectable" data-id="{item.id}" data-type="{item.assignType}" onclick="{launch}">Browse</div>
+                                        <!--<div class="icon-block" onclick="{launch}">-->
+                                        <!--<i class="icon-export"></i>-->
+                                        <!--</div>-->
+                                        <div if="{item.assignType == 'skillprofile'}"  class="progress-block">
+                                            <div class="progress-bar-holder">
+                                                <div class="progress-bar" style="width:{progress}">&nbsp;&nbsp;{progress}</div>
+                                            </div>
+                                        </div>
+                                        <div  if="{item.assignType == 'skillprofile'}" id="assignment{item.id}" class="content accordionList subItems">
+                                            <ul>
+                                                <li riot-tag="opui-launch" keyword="content" onclick="{launch}" each="{subitem in item.items}" class="selectable" id="{subitem.id}" type="{subitem.assignType}">
+                                                    <div>
+                                                        <div class="img-block">
+                                                            <img if = "{subitem.image != ''}" src="{opui.config.imgpath + subitem.image}" alt=""/>
+                                                            <img if = "{subitem.image == ''}" src="{opui.config.imgpath}img/thumbs/sample.png" alt="sample"/>
+                                                        </div>
+                                                        <div class="text-block">
+                                                            <p class="title">
+                                                                <raw content="{subitem.name}"></raw>
+                                                            </p>
+                                                            <p class="desc">
+                                                                <raw content="{subitem.description}"></raw>
+                                                            </p>
+                                                        </div>
+                                                        <div class="status-block"><span if = "{subitem.duration_secs > 0}">{subitem.duration_secs/60} min</div>
+                                                        <div class="icon-block">
+                                                            <i data-tmpl="status-completion" class="icon-status-{subitem.status}"></i>
+                                                            <i data-tmpl="status-test"></i>
+                                                        </div>
+                                                        <div class="actionBtn selectable" data-id="{item.id}" data-type="{item.assignType}" onclick="{launch}">Browse</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li if="{empty}" data-tmpl="no-items">
+                                        <div class="text-block">
+                                            <p class="title">There are no items of this type available at this time.</p>
+                                        </div>
+                                    </li>
+                                    </ul>
+
+                                    <li if="{empty}" data-tmpl="no-items">
+                                        <div class="text-block">
+                                            <p class="title">There are no items of this type available at this time.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                        </div>
+                    </div>
+                </foundation-tabs>
+
+            </div>
+        </div>
+
+    </article>
+</opui-page>

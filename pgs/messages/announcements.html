@@ -1,0 +1,40 @@
+<opui-page>
+    <article >
+        <div class="columns medium-12">
+            <ul class="list" >
+                <li class="page-heading">
+                    <p ><span style='cursor:pointer;' data-url="pgs/messages/selections.html">Messages <i class="icon-chevron-right"></i></span>{{i18n 'messages_announcements' 'Announcements'}}</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Enhance: Show All 'Announcements' -->
+        <div class="columns medium-12">
+            <opui-announcements></opui-announcements>
+        </div>
+
+        <!-- Data Render Templates -->
+        <div id="templates" style="display:none">
+
+            <!-- Announcements  -->
+            <div id="detail">
+
+                <li class="selectable selectionsPg message" data-url="" data-id="0" data-scurl="announcement-li" data-role="cellcast">
+                    <div class="columns small-1">
+                        <i class="icon-bell"></i>
+                    </div>
+                    <div class="columns small-10" style="padding-left:0">
+                        <p class="title" data-tmpl="msg_title">Title</p>
+                    </div>
+                    <div class="columns small-1">
+                        <i class="icon-caret-right"></i>
+                    </div>
+                    <span style="display:none" data-tmpl="msg_text"></span>
+                </li>
+
+            </div>
+
+        </div> <!-- /templates -->
+
+    </article>
+</opui-page>

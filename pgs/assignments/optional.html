@@ -1,0 +1,48 @@
+<article >
+	<div class="row">
+        <div class="columns medium-12">
+            <ul class="list" >
+        		<li class="page-heading">
+        			<p >{{i18n 'assignments_optional' 'Optional Assignments'}}</p>
+        		</li>
+        	</ul>
+        </div>
+    </div>
+
+	<!-- Enhance: Show All 'Optional' Content --> 
+    <div class="row">
+        <div class="columns medium-12">
+            <opui-assignments override optional="optional">
+                <ul class="list">
+                    <li each="{item in items}" class="selectable listings" data-id="{item.id}" data-type="{item.assignType}" data-role="launch">
+                        <div class="img-block">
+                            <!--<img src="" data-tmpl="thumb" onerror="this.onerror=null; this.src='img/thumbs/sample.png';"> -->
+                            <img src="{opui.config.imgpath + item.image}" alt=""/>
+                        </div>
+                        <div class="text-block">
+                            <p class="title" data-tmpl="title" >{item.name}</p>
+                            <p class="desc" data-tmpl="description">{item.description}</p>
+                        </div>
+
+                        <div class="icon-block">
+                            <i data-tmpl="status-completion" class="icon-{item.status}"></i>
+                            <i data-tmpl="status-test"></i>
+                        </div>
+                    </li>
+                    <li if="{empty}" data-tmpl="no-items">
+                        <div class="text-block">
+                            <p class="title">There are no items of this type available at this time.</p>
+                        </div>
+                    </li>
+                </ul>
+            </opui-assignments>
+
+        </div>
+    </div>
+
+    
+
+    <script>
+        $( "footer" ).hide();
+    </script>
+</article>

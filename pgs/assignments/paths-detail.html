@@ -1,0 +1,30 @@
+<opui-page back={opts.backurl}>
+    <article >
+        <div class="row">
+            <div class="columns medium-12">
+                <ul class="list" >
+                    <li class="page-heading info">
+                        <p>{decodeURIComponent(opts.title)}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+  <div class="row">
+     <div class="columns medium-12">
+        <opui-sp-detail id="{opts.id}">
+            <ul class="list limit-width break">
+                <li each="{item in skillprofile.items}" class="selectable listings imageBlock" data-id="{item.id}" data-type="{item.assignType}" data-role="launch">
+                    <div class="text-block">
+                        <p class="title" data-tmpl="title" style="font-weight:bold">{item.name}</p>
+                        <!--<p class="desc" data-tmpl="description">{description}</p>-->
+                    </div>
+                    <div class="actionBtn">Launch</div>
+                </li>
+              </ul>
+            </div>
+        </opui-sp-detail>
+    </div>
+ </div>
+    </article>
+</opui-page>

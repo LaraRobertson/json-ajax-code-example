@@ -1,0 +1,193 @@
+/* Header Styles */
+header { 
+	position: relative;
+	top: 0px; 
+	right: 0px; 
+	left: 0px; 
+	//height: 70px;
+	width: 100%; 
+	/*background: @header-background;*/
+    .gradient (#045790, #0678C7, #045790);
+	z-index: 10;
+    box-shadow: 0 7px 7px -4px rgba(0,0,0,0.2);
+    //padding-top: 9px;
+}
+
+/* Header*/
+header .button { 
+	//display: table;
+	height: 100%; 
+	//width: 60px;
+	text-align: center; 
+	font-size: 25px; 
+	line-height: 25px; 
+	background: @header-button;
+    margin-bottom:14px;}
+
+header .refresh p {
+    font-size: 14px;
+}
+header .refresh > div {
+	//display: table-cell;
+	height: 100%; 
+	//width: 100%;
+	color: @header-button-icon-color; 
+	vertical-align: middle;
+    display: inline-block;
+    padding: 0;
+}
+header .button p {
+  font-size: 17px;
+  display: inline-block;
+  line-height: 2em;
+  vertical-align: bottom;
+}
+header .button.left { 
+	float: left; }
+
+header .button.touch { 
+	background: transparent;
+
+  i{
+    color: @primary;
+  }
+}
+
+header .right.refresh {
+	display: inline-block;
+	//float: right;
+	//height: 70px;
+	//padding: 20px;
+}
+header .button.menu {
+  padding: 10px 0 0 0;
+  font-size: 2.5em;
+  text-align: left;
+  margin-bottom: 0;
+  width: 43px;
+  float:left;
+}
+.right.refresh {
+  text-align: right;
+  padding: 14px 15px 0 0;
+  font-size: 2.1em;
+}
+header .branding {
+  height: 38px;
+  width: 182px;
+  background: @branding left no-repeat;
+  background-size: contain;
+  //margin-top: 5px;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
+}
+header input[type="text"] {
+  background: @primary;
+  border-radius: 30px;
+  height: 36px;
+  font-size: 16px;
+  color: white;
+  font-weight: 100;
+  font-family: 'Roboto', Arial, sans-serif;
+  padding-left: 20px;
+  margin-top: 18px;
+}
+header i.icon-search {
+  /*position: absolute;
+  right: 30px;
+  top: 27px;*/
+  color: white;
+  margin-right:7px;
+}
+header .title {
+  text-align: center;
+  h1 {
+    color:@header-button-icon-color;
+    margin: 10px 0 0 0;
+  }
+}
+
+.welcome-bar {
+  background: #fff;
+
+  .LogoutLinks {
+    display: inline-block;
+    text-align: right;
+    padding: 3px 10px 0 10px;
+    .text {
+      display: inline-block;
+      position: relative;
+      top: -3px;
+      color: @secondary;
+      margin-right: 5px;
+    }
+    i {
+      margin-right: 5px;
+      font-size: 1.4em;
+      color: @secondary;
+    }
+  }
+  a {
+    text-align: right;
+    color: @secondary;
+    margin-right: 25px;
+  }
+}
+
+@media only screen and (max-width: 40em) {
+  header .title h1{
+    font-size: 1.5em;
+    margin-top:5px;
+  }
+  header .button.menu {
+    font-size: 2em;
+    padding-top: 7px;
+  }
+  header .branding {
+    height: 30px;
+    margin-top: 5px;
+  }
+  header .right.refresh {
+    margin: 6px 0 10px 0;
+    padding: 0;
+  }
+  header .button p {
+    line-height: 1.6;
+  }
+  header .logout-btn {
+    margin-right:15px;
+    font-size: .9em;
+    margin-top:2px;
+  }
+} /* min-width 641px, medium screens */
+
+@media only screen and (max-width: 480px) {
+  header .title h1{
+    font-size: 1.2em;
+    margin-top: 8px;
+  }
+  header .button.menu {
+    font-size: 1.8em;
+    padding-top:10px;
+    padding-left: 0px;
+  }
+  header .branding {
+    height: 30px;
+    width:150px;
+    margin:5px 0 2px 5px;
+  }
+  header .right.refresh {
+    margin: 8px 0 8px -10px;
+    padding: 0;
+  }
+  header .button p {
+    line-height: 1.6;
+  }
+  header .logout-btn {
+    margin-right: 5px;
+  }
+  .right.refresh {
+    font-size: 1.6em;
+  }
+}

@@ -1,0 +1,84 @@
+<opui-page footer="show">
+<article class="homeArticle">
+    <div class="row assignmentsRow">
+       <div class="columns small-12 medium-10 medium-offset-1">
+           <div class="row">
+                <div class="link columns small-6 medium-4" onclick="riot.route('pgs/CDE/selections.html');opui.nav.hideNav()"; return false;">
+                    <img src="img/tiles/tile-round-learning.png"/>
+                </div>
+                <opui-launch keyword="eventCalendar">
+                    <div class="link columns small-6 medium-4" onclick="{launch}">
+                        <img src="img/tiles/tile-round-events-classes.png"/>
+                    </div>
+                </opui-launch>
+                <div class="link columns small-6 round-center medium-4" onclick="riot.route('pgs/orientation/selections.html');opui.nav.hideNav()"; return false;" >
+                    <img src="img/tiles/tile-default.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+          <ul class="columns small-12 medium-10 medium-offset-1 ">
+            <li>
+              <div>
+                  <opui-assignments collection="assignments" status="all-incomplete" sortby="status-ascending" totalitems="8">
+                  <opui-swiper id="assignments" slidesperview="4" spacebetween="12" paginate>
+                          <h2 onclick="riot.route('pgs/assignments/required.html')"; return false;">Assignments <span class="h2-link">See All</span></h2>
+                          <div class="swiper-wrapper">
+                              <div each="{item in parent.items}" class="swiper-slide">
+                                  <opui-launch id="{item.id}" type="{item.assignType}" keyword="content">
+                                  <div class="link" onclick="{launch}">
+                                  <!--<div   id="{item.id}" type="{item.assignType}" keyword="content" onclick="{launch}">-->
+                                  <!--<div if = "{item.assignType == 'nugget'}"  id="{item.id}" type="{item.assignType}" keyword="content" data-role="launch">-->
+                                      <div if = "{item.image != ''}" class="swiper-content-img">
+                                          <img src="{opui.config.imgpath + item.image}" />
+                                          <!--<img src="{opui.config.imgpath}img/misc/slide-default.png" />-->
+                                      </div>
+                                      <!-- if image is blank show default -->
+                                      <div if = "{item.image == ''}"  class="swiper-content-img">
+                                          <img src="{opui.config.imgpath}img/misc/slide-default.png" />
+                                      </div>
+
+                                      <p class="title slide-title" >{item.name}</p>
+                                      <!--<div class="status-icons">-->
+                                          <!--<p  if="{item.status === 2}"><i class="icon-complete"></i></p>-->
+                                          <!--<p  if="{item.status === 4}"><i class="icon-incomplete"></i></p>-->
+                                          <!--<p  if="{item.status === 6}"><i class="icon-not_attempted"></i></p>-->
+                                      <!--</div>-->
+                                  </div>
+                                  </opui-launch>
+                              </div>
+                              <div if="{empty}" data-tmpl="no-items">
+                                  <div class="text-block">
+                                      <p class="title">There are no items of this type available at this time.</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="swiper-navigation">
+                              <div class="swiper-{opts.id}-next swiper-button-next">  </div>
+                                <div class="swiper-pagination"></div>
+                              <div class="swiper-{opts.id}-prev swiper-button-prev">  </div>
+                          </div>
+                          <div class="see-all" onclick="riot.route('pgs/assignments/required.html')"; return false;">See All</div>
+                   </opui-swiper>
+
+                  </opui-assignments>
+              </div>
+            </li>
+          </ul>
+      </div>
+    <div class="row bottom-links">
+      <div class="columns small-12 medium-10 medium-offset-1">
+          <div class="border">
+              <div class="row">
+                <opui-launch keyword="forumList"><div class="columns small-6"><div class="button selectable" onclick="{launch}">Forums</div></div></opui-launch>
+                <opui-launch keyword="opdoc"><div class="columns small-6" onclick="{launch}"><div class="button selectable">Document Library</div></div></opui-launch>
+              </div>
+          </div>
+      </div>
+    </div>
+
+</article>
+</opui-page>
+
+

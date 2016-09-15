@@ -1,0 +1,41 @@
+#chart-area {
+	border: 10px solid #5b5c5c;
+	border-radius: 50%;
+}
+
+/*tablet portrait navigation - landscape*/
+@media screen and  (min-width: 748px) and (orientation: landscape) { 
+	.progress-wheel-container {
+		display: inline-block;
+		width: 32px;
+		float: left;
+	}
+
+	.progress-wheel-container {
+		display: inline-block;
+		top: 0;
+		width: 45%;
+		list-style: none;
+		padding: 0;
+		z-index:0;
+		border-right: 1px solid #ccc;
+	}
+
+}
+
+/*small screen to tablet portrait navigation - landscape*/
+@media screen and (min-width: 321px) and (max-width: 747px)  { 
+
+}
+
+/*small screen navigation - portrait*/
+@media screen and (min-width: 320px) and (max-width: 560px) { 
+	.progress-wheel-container {
+		top: 0;
+		width: 100%;
+		list-style: none;
+		padding: 0;
+		z-index:0;
+	}
+
+}

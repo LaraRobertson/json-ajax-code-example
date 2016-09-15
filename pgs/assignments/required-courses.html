@@ -1,0 +1,51 @@
+<article class="course-list">
+    <div class="columns small-12">
+      <div class="title-bar row">
+        <div class="columns small-3">
+          <h2>My Courses</h2>
+        </div>
+        <div class="columns small-6">
+          <a href="#" class="button">Find More Courses</a>
+        </div>
+        <div class="columns small-2 sort-filters">
+          <span class="sort-by">Sort By</span>
+          <p>
+            <span class="sort-duedate left"><i class="icon-clock"></i></span>
+            <span class="sort-alpha right"><span class="a">A</span>/<span class="z">Z</span></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+	  <opui-assignments override collection="assignments" subset="skillprofile">
+
+      <div class="columns medium-12">
+        <ul id="home_tiles" class="list home-featured">
+          <li each="{item in items}" class="selectable listings course-li" data-id="{item.id}" data-type="{item.assignType}" data-url="pgs/assignments/paths-detail.html">
+            <opui-sp-detail id="{item.id}">
+              <div class="columns small-2">
+                <!--<img src="" data-tmpl="thumb" onerror="this.onerror=null; this.src='img/thumbs/sample.png';"> -->
+                <img src="{opui.config.imgpath + course.image}" alt=""/>
+              </div>
+              <div class="columns small-7">
+                <p class="title" data-tmpl="title" >{course.name}</p>
+              </div>
+              <div class="columns small-2">
+                <p class="dur" if="{course.status === 2}">Complete</p>
+                <p class="dur" if="{course.status === 4}">Incomplete</p>
+                <p class="dur" if="{course.status === 6}">Not Started</p>
+                <p class="dur">{course.duration} Min</p>
+              </div>
+              <div class="columns small-1 dueby status-{course.status}">
+                <p><span>3</span> Days Left!</p>
+              </div>
+            </opui-sp-detail>
+          </li>
+          <li if="{empty}" data-tmpl="no-items">
+            <p class="title">There are no items of this type available at this time.</p>
+          </li>
+        </ul>
+      </div>
+
+  </opui-assignments>
+</article>

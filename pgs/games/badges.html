@@ -1,0 +1,32 @@
+<opui-page back="pgs/games/profiles.html">
+ <article>
+	
+			<div class="row">
+				<div class="columns medium-12">
+					<ul class="list" >
+						<li class="page-heading info">
+							<p >{{i18n 'earned_badges' 'Earned Badges'}}</p>
+                            <opui-back back="{back}">
+                                <div class="header-back" onclick="{goback}">
+                                    <div class="icon-block"><i class="icon-chevron-left"></i></div>
+                                    <div    >Back</div>
+                                </div>
+                            </opui-back>
+						</li>
+					</ul>
+				</div>
+			</div>
+     <div id="games-progress">
+     <opui-games-progress>
+        <div each="{games}" class="row">
+            <div class="columns medium-12">
+                <h3 class="game_name">{name}</h3>
+                <ul class="badgeLayout columns medium-12">
+                    <li each="{badges}" class="columns medium-3"><img src="{badge_url}"/><br/>{badge_title}</li>
+                </ul>
+            </div>
+        </div>
+     </opui-games-progress>
+     </div>
+</article>
+</opui-page>

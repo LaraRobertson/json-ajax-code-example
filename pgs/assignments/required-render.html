@@ -1,0 +1,50 @@
+<opui-page>
+<article >
+	
+	<div class="row">
+		<div class="columns medium-12">
+			<ul class="list" >
+				<li class="page-heading info">
+					<p >{{i18n 'assignments_required' 'Required Assignments'}}</p>
+					<div class="icon-block"> 
+                        <!-- <a href="#" data-reveal-id="legend-page"><i class="icon-info" style="margin-right: 12px; font-size: 30px; color: #fff;"></i></a> -->
+                        <span data-role="reveal" data-template="#modal-legend_tmpl"><i class="icon-info" style="margin-right: 12px; font-size: 30px; color: #fff;"></i></span>
+
+                        
+                    </div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div id="filter-buttons" class="row">
+		<div class="columns medium-12">
+		    <ul  >
+		        <li class="selected columns small-4" data-role="link-filter" data-target="#pageList" data-status="not-attempted"><div>{{i18n 'unattempted' 'Unattempted'}}</div></li>
+		        <li class="columns  small-4" data-role="link-filter" data-target="#pageList" data-status="incomplete"><div>{{i18n 'incomplete' 'Incomplete'}}</div></li>
+		        <li class="columns  small-4" data-role="link-filter" data-target="#pageList" data-status="complete"><div>{{i18n 'complete' 'Completed'}}</div></li>
+		    </ul>
+	    </div>
+    </div>
+
+	<!-- Enhance: Show All 'Required' Content --> 
+	<div class="row">
+		<div class="columns medium-12">
+			<ul id="pageList" class="render list" data-optional="required" data-template="#default_tmpl_render" data-status="not-attempted" >  
+				<li data-tmpl="no-items">
+					<div class="text-block">
+						<p class="title">{{i18n "general_no_items" "There are no items of this type available at this time."}}</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<script>
+        $( "footer" ).hide();
+    </script>
+
+
+</article>
+</opui-page>

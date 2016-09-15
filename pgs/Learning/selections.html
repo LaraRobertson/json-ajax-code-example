@@ -1,0 +1,61 @@
+<opui-page backbtn="on">
+<article >
+    <div class="row">
+        <div class="columns medium-12">
+            <ul class="list" >
+                <li class="page-heading info">
+                    <p>Learning</p>
+                    <opui-back back="{back}">
+                        <div class="header-back" onclick="{goback}">
+                            <div class="icon-block"><i class="icon-chevron-left"></i></div>
+                            <div>Back</div>
+                        </div>
+                    </opui-back>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="columns medium-12">
+            <ul class="list" style="padding-top:25px;">
+
+                <li class="selectable listings" onclick="riot.route('pgs/assignments/tags.html?title=Learning > Compliance&tags=Compliance&backurl=pgs/learning/selections.html')"; return false;" data-nav="Additional Resources">
+                    <div class="text-block">
+                        <p class="title">Compliance</p>
+                    </div>
+                    <div class="icon-block">
+                        <i class="icon-chevron-right"></i>
+                    </div>
+                </li>
+                <li class="selectable listings" onclick="riot.route('pgs/assignments/tags.html?title=Learning > High Visibility&tags=High Visibility&backurl=pgs/learning/selections.html')"; return false;" data-nav="Additional Resources">
+                <div class="text-block">
+                    <p class="title">High Visibility</p>
+                </div>
+                <div class="icon-block">
+                    <i class="icon-chevron-right"></i>
+                </div>
+                </li>
+                <li class="selectable listings" onclick="riot.route('pgs/assignments/tags.html?title=Learning > ORGs&tags=ORGs&backurl=pgs/learning/selections.html')"; return false;" data-nav="Additional Resources">
+                    <div class="text-block">
+                        <p class="title">ORGs</p>
+                    </div>
+                    <div class="icon-block">
+                        <i class="icon-chevron-right"></i>
+                    </div>
+                </li>
+
+                <li class="selectable listings" onclick="riot.route('pgs/assignments/tags.html?title=Learning > Reference Materials&tags=Reference Materials&backurl=pgs/learning/selections.html')"; return false;" data-nav="Additional Resources">
+                    <div class="text-block">
+                        <p class="title">Reference Materials</p>
+                    </div>
+                    <div class="icon-block">
+                        <i class="icon-chevron-right"></i>
+                </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</article>
+</opui-page>

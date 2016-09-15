@@ -1,0 +1,110 @@
+<opui-page>
+    <article >
+        <div class="columns medium-12">
+            <ul class="list" >
+                <li class="page-heading">
+                    <p>Hierarchy</p>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="columns medium-10 medium-offset-1" >
+                <opui-hierarchy2 node="{opts.node_id}">
+
+                    <div  id="hierarchyContent">
+                        <ul>
+                            <li class="browse-title center">Hierarchy Content</li>
+                            <li class = "{hidden: node_id == opts.node_id}">
+                                <a class="home-icon"  href="#pgs/hierarchy/hierarchy.html?title=Hierarchy&role=ajax&nav=hierarchy&node_id={ opts.node_id }"><i class="icon-home"></i></a>
+                                <i class="icon-chevron-right"></i>
+
+                                <div each="{breadcrumb }" style="display:inline-block;">
+
+                                    <a class="nowrap " href="#" onclick="{ parent.breadcrumbNav }">{ text }</a>
+                                    <i class="icon-chevron-right"></i>
+
+                                </div>
+                                <span class="nowrap">{ node_title }</span>
+
+                            </li>
+                        </ul>
+                        <ul class="list">
+
+                            <li each = "{children}" class="select-node" data-node="{ node_id }">
+                                <a href="#pgs/hierarchy/hierarchy.html?node_id={node_id}">
+                                    <div class="text-block">
+                                        <p class="title">{ node_title }</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right red-bg"></i>
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="viewWrapper { hidden: items.length == 0 }">
+                        <ul>
+                            <li class="view-title center">View Items</li>
+                        </ul>
+                        <ul class="list">
+                            <li each = "{items}">
+                                <div class="selectable {hidden: obj_type !== 'game'}" data-id="{ game_id }" data-role="cellcast" data-url="cellcast://menu/gameprofiles/{ game_id }">
+                                    <div class="text-block">
+                                        <p class="title">{ game_name }</p>
+                                    </div>
+                                    <div class="button-block">
+                                        <div>
+                                            <p class="{hidden: status == 'assigned'}">Assign</p>
+                                            <p class="{hidden: status == 'unassigned'}">Launch</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="selectable {hidden: obj_type !== 'event'}" data-id="{ event_id }">
+                                    <div class="text-block">
+                                        <p class="title">{ name }</p>
+                                        <p> { event_description }</p>
+                                    </div>
+
+                                </div>
+
+                                <div class=" { hidden: obj_type == 'event' || obj_type == 'game' }">
+
+                                    <div class="selectable { hidden: obj_type == 'skillprofile' }" data-id="{ id }" data-type="{ obj_type }" data-role="launch">
+                                        <div class="text-block">
+                                            <p class="title">{ name }</p>
+                                        </div>
+                                        <div class="button-block">
+                                            <div>
+                                                <p class="{hidden: status == 'assigned'}">Assign</p>
+                                                <p class="{hidden: status == 'unassigned'}">Launch</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="selectable { hidden: obj_type !== 'skillprofile'  }" data-id="{ id }" data-type="{ obj_type }" data-role="skillprofile-detail">
+                                        <div class="text-block">
+                                            <p class="title">{ name }</p>
+                                        </div>
+                                        <div class="button-block">
+                                            <div>
+                                                <p class="{hidden: status == 'assigned'}">Assign</p>
+                                                <p class="{hidden: status == 'unassigned'}">Launch</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+
+                </opui-hierarchy2>
+            </div>
+        </div>
+    </article>
+</opui-page>

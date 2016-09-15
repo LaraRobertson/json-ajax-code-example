@@ -1,0 +1,47 @@
+<article >
+	<div class="row">
+
+		 <div class="columns medium-12">
+            <ul class="list" >
+                <li class="page-heading">
+                    <p>{{i18n "all_assignments" "Content"}}</p>
+                </li>
+            </ul>
+        </div>
+
+		<div class="columns medium-12">
+			<ul class="list" >
+				<li class="selectable selectionsPg" data-url="pgs/assignments/required.html" data-role="ajax" data-nav="content">
+					<div class="text-block">
+						<p class="title">{{i18n 'assignments_required' 'Required Assignments'}}</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li>
+				<li class="selectable selectionsPg" data-url="pgs/assignments/optional.html" data-role="ajax" data-nav="content">
+					<div class="text-block">
+						<p class="title">{{i18n 'assignments_optional' 'Optional Assignments'}}</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li>
+				<li class="selectable selectionsPg" data-url="pgs/assignments/learningpaths.html" data-role="ajax" data-nav="content">
+					<div class="text-block">
+						<p class="title">{{i18n 'assignments_learning_paths' 'Learning Paths'}}</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li>
+			</ul>
+			<a href="" data-modal data-header="CHECK IT" data-body="Bust a move." data-actiontext="close" class="btn btn-big">Modal!</a>
+			<a href="" data-modal="#legend" class="btn btn-big">Legend</a>
+		</div>
+	</div>
+
+	<script>
+        $( "footer" ).hide();
+    </script>
+</article>

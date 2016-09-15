@@ -1,0 +1,334 @@
+
+
+    <ul class="list limit-width break alt-bg" style="padding-top:25px;">
+        <li class="page-heading">
+            <div class="text-block">
+                <p class="title">Training</p>
+            </div>
+        </li>
+    </ul>
+
+    <article style="padding:0 15px 0 15px">
+
+
+
+   <div class="progress-wheel-container">
+        <!-- <img src="img/misc/ProgressWheelwithLegend.png" alt=""> -->
+
+        <div class="progress-wheel-inner">
+            <canvas id="chart-area" width="600" height="600"/>
+
+            <div id="legend"></div>
+        </div>
+    </div>
+
+
+
+    <ul class="enhance list limit-width break content-container listings open" data-collection="assignments" data-subset="skillprofile" data-orderascending="torder" data-tags="training" data-rule="exclusive" data-template='{"activities":"#activity_tmpl", "skillprofiles":"#training_skillprofile_tmpl", "dflt":"#default_tmpl", "unassigned":"#catalog_tmpl"}'   >
+        <li data-tmpl="no-items">
+            <div class="text-block">
+                <p class="title">There are no items of this type available at this time.</p>
+            </div>
+        </li>
+    </ul>
+    <br style="clear:both" />
+
+    <script>
+        $( "footer" ).hide();
+
+        var polarColors = [
+            {
+                color: 'rgba(250, 166, 26, 1)',
+                background: 'rgba(249, 193, 99, 1)',
+                highlight: '#d48c15'
+            },
+            {
+                color: "rgba(245, 130, 32, 1)",
+                background: "rgba(250, 170, 101, 1)",
+                highlight: "#c86b1b"
+            },
+            {
+                color: "rgba(210, 35, 42, 1)",
+                background: "rgba(225, 101, 106, 1)",
+                highlight: "#a5191e"
+            },
+            {
+                color: "rgba(51, 28, 14, 1)",
+                background: "rgba(83, 56, 39, 1)",
+                highlight: "#1a0d06"
+            },
+            {
+                color: "rgba(163, 162, 12, 1)",
+                background: "rgba(201, 200, 43, 1)",
+                highlight: "#77760d"
+            },
+            {
+                color: "rgba(199, 197, 67, 1)",
+                background: "rgba(218, 217, 125, 1)",
+                highlight: "#a3a12e"
+            },
+            {
+                color: "rgba(255, 198, 0, 1)",
+                background: "rgba(255, 223, 111, 1)",
+                highlight: "#d7a803"
+            },
+            {
+                color: "rgba(167, 117, 9, 1)",
+                background: "rgba(201, 167, 95, 1)",
+                highlight: "#845d09"
+            },
+            {
+                color: "rgba(0, 133, 35, 1)",
+                background: "rgba(71, 173, 98, 1)",
+                highlight: "#024c16"
+            },
+            {
+                color: "rgba(13, 49, 51, 1)",
+                background: "rgba(63, 103, 105, 1)",
+                highlight: "#061c1d"
+            },
+            {
+                color: "rgba(0, 32, 90, 1)",
+                background: "rgba(43, 72, 125, 1)",
+                highlight: "#03173b"
+            },
+            {
+                color: "rgba(0, 88, 173, 1)",
+                background: "rgba(71, 132, 192, 1)",
+                highlight: "#074a8b"
+            },
+            {
+                color: 'rgba(250, 166, 26, 1)',
+                background: 'rgba(249, 193, 99, 1)',
+                highlight: '#d48c15'
+            },
+            {
+                color: "rgba(245, 130, 32, 1)",
+                background: "rgba(250, 170, 101, 1)",
+                highlight: "#c86b1b"
+            },
+            {
+                color: "rgba(210, 35, 42, 1)",
+                background: "rgba(225, 101, 106, 1)",
+                highlight: "#a5191e"
+            },
+            {
+                color: "rgba(51, 28, 14, 1)",
+                background: "rgba(83, 56, 39, 1)",
+                highlight: "#1a0d06"
+            },
+            {
+                color: "rgba(163, 162, 12, 1)",
+                background: "rgba(201, 200, 43, 1)",
+                highlight: "#77760d"
+            },
+            {
+                color: "rgba(199, 197, 67, 1)",
+                background: "rgba(218, 217, 125, 1)",
+                highlight: "#a3a12e"
+            },
+            {
+                color: "rgba(255, 198, 0, 1)",
+                background: "rgba(255, 223, 111, 1)",
+                highlight: "#d7a803"
+            },
+            {
+                color: "rgba(167, 117, 9, 1)",
+                background: "rgba(201, 167, 95, 1)",
+                highlight: "#845d09"
+            },
+            {
+                color: 'rgba(250, 166, 26, 1)',
+                background: 'rgba(249, 193, 99, 1)',
+                highlight: '#d48c15'
+            },
+            {
+                color: "rgba(245, 130, 32, 1)",
+                background: "rgba(250, 170, 101, 1)",
+                highlight: "#c86b1b"
+            },
+            {
+                color: "rgba(210, 35, 42, 1)",
+                background: "rgba(225, 101, 106, 1)",
+                highlight: "#a5191e"
+            },
+            {
+                color: "rgba(51, 28, 14, 1)",
+                background: "rgba(83, 56, 39, 1)",
+                highlight: "#1a0d06"
+            },
+            {
+                color: "rgba(163, 162, 12, 1)",
+                background: "rgba(201, 200, 43, 1)",
+                highlight: "#77760d"
+            },
+            {
+                color: "rgba(199, 197, 67, 1)",
+                background: "rgba(218, 217, 125, 1)",
+                highlight: "#a3a12e"
+            },
+            {
+                color: "rgba(255, 198, 0, 1)",
+                background: "rgba(255, 223, 111, 1)",
+                highlight: "#d7a803"
+            },
+            {
+                color: "rgba(167, 117, 9, 1)",
+                background: "rgba(201, 167, 95, 1)",
+                highlight: "#845d09"
+            },
+            {
+                color: "rgba(0, 133, 35, 1)",
+                background: "rgba(71, 173, 98, 1)",
+                highlight: "#024c16"
+            },
+            {
+                color: "rgba(13, 49, 51, 1)",
+                background: "rgba(63, 103, 105, 1)",
+                highlight: "#061c1d"
+            },
+            {
+                color: "rgba(0, 32, 90, 1)",
+                background: "rgba(43, 72, 125, 1)",
+                highlight: "#03173b"
+            },
+            {
+                color: "rgba(0, 88, 173, 1)",
+                background: "rgba(71, 132, 192, 1)",
+                highlight: "#074a8b"
+            },
+            {
+                color: 'rgba(250, 166, 26, 1)',
+                background: 'rgba(249, 193, 99, 1)',
+                highlight: '#d48c15'
+            },
+            {
+                color: "rgba(245, 130, 32, 1)",
+                background: "rgba(250, 170, 101, 1)",
+                highlight: "#c86b1b"
+            },
+            {
+                color: "rgba(210, 35, 42, 1)",
+                background: "rgba(225, 101, 106, 1)",
+                highlight: "#a5191e"
+            },
+            {
+                color: "rgba(51, 28, 14, 1)",
+                background: "rgba(83, 56, 39, 1)",
+                highlight: "#1a0d06"
+            },
+            {
+                color: "rgba(163, 162, 12, 1)",
+                background: "rgba(201, 200, 43, 1)",
+                highlight: "#77760d"
+            },
+            {
+                color: "rgba(199, 197, 67, 1)",
+                background: "rgba(218, 217, 125, 1)",
+                highlight: "#a3a12e"
+            },
+            {
+                color: "rgba(255, 198, 0, 1)",
+                background: "rgba(255, 223, 111, 1)",
+                highlight: "#d7a803"
+            },
+            {
+                color: "rgba(167, 117, 9, 1)",
+                background: "rgba(201, 167, 95, 1)",
+                highlight: "#845d09"
+            }
+        ]
+
+        function getSkillprofileCollectionProgress (collection){
+            var progress = 0;
+            collection.forEach(function(item){
+                progress += getSkillprofileProgress(item);
+            });
+            return Math.round((progress / (collection.length * 100))*100);
+        }
+
+
+        function getSkillprofileProgress (skillprofile) {
+            // get skillprofile
+            var sp = $.parseJSON(JSON.stringify(skillprofile));
+
+            // get skillprofile items
+            var totalItems = sp.items.length;
+
+
+            var spCompletedItems = 0;
+
+            sp.items.forEach(function(item){
+                console.log('type: ' + item.type + ' id: ' + item.id + ' mobile? ' + item.mobile)
+                if(item.mobile){
+                    var i = assignments.assignments.filter(function(e){
+                        return (e.id === item.id && e.assignType === item.type);
+                    });
+                    // console.log(i[0])
+
+                    if(i.length > 0 && (i[0].status < 3 || i[0].sco_status < 3 || i[0].status === 'Completed')){
+                        spCompletedItems++;
+                    }
+                }
+            })
+
+            var progress = Math.round((spCompletedItems / totalItems) * 100);
+
+            return progress;
+
+        }
+
+
+        pageLoad.done(function(){
+
+            var chartData = [];
+            var data = assignments.assignments.filter(function(assignment){
+                return ((assignment.metatags.search('training') > -1) && assignment.assignType === 'skillprofile');
+            })
+
+            data = orderByTagAscending(data, 'torder');
+
+            // Prepare chart segments
+            data.forEach(function(e,i){
+                // console.log(i)
+                var segment = {
+                    value: getSkillprofileProgress(e),
+                    highlight: polarColors[i].highlight,
+                    label: e.name,
+                    launch_id: e.id,
+                    background: polarColors[i].background,
+                    color: polarColors[i].color,
+                    innerStrokeColor: 'rgba(0, 0, 0, 0)'
+                }
+                chartData.push(segment);
+            });
+
+
+            var ctx = document.getElementById("chart-area").getContext("2d");
+            window.myPolarMax = new Chart(ctx).PolarMax(chartData, {
+                responsive:true,
+                scaleShowLabelBackdrop: false,
+                scaleShowLine: false,
+                animation: false,
+                animationEasing: 'easeOutBounce',
+                animateRotate: false,
+                animateScale: false,
+                animationSteps: 10,
+                scaleShowLabels: false,
+                innerRadius: 50,
+                segmentStrokeWidth: 4,
+                legendTemplate : $('#legend_tmpl').html(),
+                tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>%",
+                overallProgress: getSkillprofileCollectionProgress(data)
+
+            });
+            myPolarMax.update();
+
+            var legend = document.getElementById('legend');
+            legend.innerHTML = myPolarMax.generateLegend();
+
+        });
+
+    </script>
+</article>
+

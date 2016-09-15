@@ -1,0 +1,77 @@
+<article style="padding:0 15px 0 15px">
+	<ul class="list limit-width break alt-bg" style="padding-top:25px;">
+		<li class="selectable">
+			<div class="text-block">
+				<p class="title">End User Agreements</p>
+			</div>
+			<div class="icon-block">
+				<i class="icon-chevron-down"></i>
+			</div>
+		</li>
+	</ul>
+
+
+	<ul class="list limit-width break">
+		<li class="selectable" data-action="checkRemoteEUA">
+			<div class="text-block">
+				<p class="title" id="actionText">Read and Accept Agreements</p>
+			</div>
+			<div class="icon-block">
+				<i class="icon-chevron-down"></i>
+			</div>
+		</li>
+	</ul>
+
+
+	<script>
+		pageLoad.done(function(){
+			$('[data-action]').hammer().on('tap', function(e){
+				e.preventDefault();
+				var action = $(this).data('action');
+				
+				if (action === 'loadRemoteEUA') {
+					opui.eua.loadRemoteEUA('https://t.mlearning.com/loblaw_eula/check?k=');
+				};
+
+				if (action === 'checkRemoteEUA') {
+					opui.eua.checkRemoteEUA('https://t.mlearning.com/loblaw_eula/check?a=1&k=')
+					.done(function(data){
+						$('#actionText').html('Tap here to complete');
+						alert(data.code);
+						if (data.code === 0){
+							alert('Unknown User, returning to user list');
+							window.location = 'cellcast://action/logout';
+						}
+
+						else if(data.code === 1){
+							alert('LOADING UI YAY');
+							opui.nav.loadNav('pgs/navigation/navigation.html');
+					        opui.history.stepPush(opui.config.home, 'home', null);
+					        opui.history.loadTarget(opui.config.home, null);
+					        $(window).trigger('resize');
+						}
+						
+						else if(data.code === 2) {
+							var test = confirm("You have previously declined Loblaw's required agreements, do you want to read them again?");
+							 if (test){
+								opui.eua.loadRemoteEUA('https://t.mlearning.com/loblaw_eula/check?k=');
+							 } else {
+							 	window.location = 'cellcast://action/logout';
+							 }
+						}
+
+						else if (data.code === 3) {
+							opui.eua.loadRemoteEUA('https://t.mlearning.com/loblaw_eula/check?k=');
+						}
+
+						else {
+
+						}
+
+					})
+				};
+			});
+		});
+	</script>
+
+</article>

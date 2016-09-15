@@ -1,0 +1,498 @@
+<opui-page back="pgs/home/home.html">
+    <article>
+
+        <div class="row">
+            <div class="columns medium-12">
+                <ul class="list">
+                    <li class="page-heading banner banner_startUp">
+                        <p>Stage » Study Start-Up</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="columns medium-12 small-12">
+                <foundation-tabs>
+                    <ul id="filter-buttons" class="tabs" data-tab>
+                        <li class="active columns large-3">
+                            <a href="#panel1">Documents</a>
+                        </li>
+                        <li class="columns large-3">
+                            <a href="#panel2">Sub Dept</a>
+                        </li>
+                        <li class="columns large-3">
+                            <a href="#panel3">Topic</a>
+                        </li>
+                        <li class="columns large-3">
+                            <a href="#panel4">Role</a>
+                        </li>
+                    </ul>
+                    <div class="tabs-content assignmentListings">
+                        <div class="content active" id="panel1">
+                            <opui-assignments collection="catalog" optional="optional" tags="CDE,STARTUP,DOCUMENT"
+                                              rule="exclusive">
+                                <ul>
+                                    <li each="{item in items}" class="assignment" data-id="{item.id}" data-type="{item.assignType}" data-role="launch">
+                                        <div class="img-block">
+                                            <img src="{opui.config.imgpath + item.image}" alt=""/>
+                                        </div>
+                                        <div class="text-block">
+                                            <p class="assign" data-tmpl="title" ><raw content="{item.name}"></raw></p>
+                                            <p class="desc" data-tmpl="description"><raw content="{item.description}"></raw></p>
+                                        </div>
+                                        <!--<div class="assignLink">-->
+                                        <!--<div class="icon-block">-->
+                                        <!--<i data-tmpl="status-completion" class="icon-{item.status}"></i>-->
+                                        <!--<i data-tmpl="status-test"></i>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <div class="icon-block" data-id="{item.id}" data-type="{item.assignType}" >
+                                            <i class="icon-export"></i>
+                                        </div>
+                                    </li>
+                                    <li if="{empty}" data-tmpl="no-items">
+                                        <div class="text-block">
+                                            <p class="title">There are no items of this type available at this time.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </opui-assignments>
+                        </div>
+                        <!-- Sub Department -->
+                        <div class="content" id="panel2">
+                            <ul class="list">
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Clinical Data Management"
+                                    data-tags="CDE,STARTUP,CDM" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Clinical Data Management</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Clinical Operations"
+                                    data-tags="CDE,STARTUP,CO" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Clinical Operations</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Clinical Site Services"
+                                    data-tags="CDE,STARTUP,CSS" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Clinical Site Services</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Clinical Trail Transparency"
+                                    data-tags="CDE,STARTUP,CTT" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Clinical Trail Transparency</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Process Management and Business
+                                    Analytics" data-tags="CDE,STARTUP,PMBA" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Process Management and Business Analytics</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Vendor Strategic Management"
+                                    data-tags="CDE,STARTUP,VSM" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Vendor Strategic Management</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <!-- Topic -->
+                        <div class="content" id="panel3">
+                            <ul class="list">
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Study & Project Management"
+                                     data-tags="CDE,STARTUP,SPM" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Study &amp; Project Management</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Transparency (CTT, GST)"
+                                    data-tags="CDE,STARTUP,TRANSPARENCY" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Transparency (CTT, GST)</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Protocol Development and PPRC"
+                                    data-tags="CDE,STARTUP,PD_PPRC" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Protocol Development and PPRC</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Country and Site Selection"
+                                    data-tags="CDE,STARTUP,COUNTRY_SITE_SELECTION" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Country and Site Selection </p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Vendor Management"
+                                    data-tags="CDE,STARTUP,VENDORMANAGEMENT" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Vendor Management</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Data Management"
+                                    data-tags="CDE,STARTUP,DM" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Data Management</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Medical Coding"
+                                    data-tags="CDE,STARTUP,MEDICAL_CODING" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Medical Coding</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html" data-title="EDC"
+                                    data-tags="CDE,STARTUP,EDC" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">EDC</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Site Monitoring / Mgmt"
+                                    data-tags="CDE,STARTUP,SITE_MONITORING_MGMT" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Site Monitoring / Mgmt</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Investigational Medicinal Product"
+                                    data-tags="CDE,STARTUP,IMP" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Investigational Medicinal Product</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Trial Master File"
+                                    data-tags="CDE,STARTUP,TMF" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Trial Master File</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html" data-title="Compliance"
+                                    data-tags="CDE,STARTUP,COMPLIANCE" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Compliance</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Clinical Study Report"
+                                    data-tags="CDE,STARTUP,CSR" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Clinical Study Report</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html" data-title="Regulatory"
+                                    data-tags="CDE,STARTUP,REGULATORY" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Regulatory</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html" data-title="Safety"
+                                    data-tags="CDE,STARTUP,SAFETY" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Safety</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html" data-title="Quality"
+                                    data-tags="CDE,STARTUP,QUALITY" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Quality</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html" data-title="Unblinding"
+                                    data-tags="CDE,STARTUP,UNBLINDING" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title"> Unblinding</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Medical Monitoring"
+                                    data-tags="CDE,STARTUP,MEDICAL_MONITORING" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Medical Monitoring</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html" data-title="Biostatistics"
+                                    data-tags="CDE,STARTUP,BIOSTATS" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title"> Biostatistics</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <!-- Role -->
+                        <div class="content" id="panel4">
+                            <ul class="list">
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html" data-title="VP of CDE"
+                                    data-tags="CDE,STARTUP,CDE_VP" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">VP of CDE</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html" data-title="Outsourcing"
+                                    data-tags="CDE,STARTUP,CDE_OUTSOURCING" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Outsourcing</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Global Spend Transparency (GST)"
+                                    data-tags="CDE,STARTUP,GST" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Global Spend Transparency (GST)</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html" data-title="Training"
+                                    data-tags="CDE,STARTUP,CDE_TRAINING" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Training</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Clinical Operations (CO)"
+                                    data-tags="CDE,STARTUP,CO" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Clinical Operations (CO)</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Clinical Trail Transparency (CTT)"
+                                    data-tags="CDE,STARTUP,CTT" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Clinical Trail Transparency (CTT)</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Trail Master File (TMF)"
+                                    data-tags="CDE,STARTUP,TMF" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Trail Master File (TMF)</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Clinical Site Services (CSS)"
+                                    data-tags="CDE,STARTUP,CSS" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Clinical Site Services (CSS)</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Data Management (DM)"
+                                    data-tags="CDE,STARTUP,DM" data-nav="CDE" data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Data Management (DM)</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+
+                                <li class="selectionsPg" data-url="pgs/assignments/tags.html"
+                                    data-title="Process Management and Business
+                                    Analytics (PMBA)" data-tags="CDE,STARTUP,PMBA" data-nav="CDE"
+                                    data-prepend="Study Start-Up"
+                                    data-section="Stage" data-banner="banner_startUp">
+                                    <div class="text-block">
+                                        <p class="title">Process Management and Business Analytics (PMBA)</p>
+                                    </div>
+                                    <div class="icon-block">
+                                        <i class="icon-chevron-right"></i>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </foundation-tabs>
+            </div>
+        </div>
+
+
+
+
+    </article>
+</opui-page>

@@ -1,0 +1,63 @@
+<opui-page>
+<article >
+    <div class="row">
+        <div class="columns medium-12">
+            <ul class="list" >
+                <li class="page-heading">
+                    <p >{{i18n 'main_search' 'Search'}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="columns medium-12 scroll-enable">
+
+
+            <opui-search collection="catalog">
+                <ul class="list searchList" >
+
+                   <li class="search-box">
+                                <div class="input-block">
+                                <form onsubmit="{submit}">
+                                    <input type="search" name="term"  value="{value}" onfocus="{changeValue}" onblur="{changeValue}"/>
+                                </form>
+
+                                </div>
+                                <div data-role="search-button" class="icon-block">
+                                    <button onclick="{submit}" class="search-button">{{i18n 'main_search' 'Search'}}</button>
+                                </div>
+                               <div data-role="search-clear" class="icon-block {hidden: newValue}" >
+                                   <i class="icon-remove" onclick="{clearValue}"></i>
+                               </div>
+
+                   </li>
+                    <li id="search-count" if="{items.length > 0}">search results: { items.length }</li>
+                    <li if="{items.length > 0}"><h2>Results:</h2></li>
+
+                    <li each="{item in items}" class="assignment listings imageBlock">
+                            <div class="img-block">
+                                <img if = "{item.assignType && item.image != ''}" src="{opui.config.imgpath + item.image}" alt=""/>
+                                <img if = "{item.selectionType || item.image == ''}" src="{opui.config.imgpath}img/thumbs/sample.png" alt="sample"/>
+                            </div>
+                            <div class="text-block">
+                                <p class="title">{item.name}</p>
+                                <!--<p class="desc" data-tmpl="description">
+                                    <raw content="{item.description}"></raw>
+                                </p>-->
+                            </div>
+                            <div if="{item.selectionType}" class="actionBtn" onclick="{assign}">Assign</div>
+                            <opui-launch id="{item.id}" type="{item.assignType}" keyword="content"><div if="{item.assignType}" class="actionBtn selectable" onclick="{launch}">Launch</div></opui-launch>
+                    </li>
+                    <li if="{items.length < 1}" class="assignment">
+                        <div class="text-block">
+                            <p class="title">There are no items of this type available at this time.</p>
+                        </div>
+                    </li>
+                </ul>
+            </opui-search>
+        </div>
+    </div> 
+
+</article>
+</opui-page>

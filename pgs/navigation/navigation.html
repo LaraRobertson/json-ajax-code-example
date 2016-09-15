@@ -1,0 +1,72 @@
+<article>
+	<div class="nav_header" style="box-shadow:inset -8px 0px 10px -6px rgba(0,0,0,.25);">
+	</div>
+	
+	<!--<ul class="nav-list render" data-role="nav-list" data-collection="menu" data-template="#menu_tmpl">-->
+		<!--<li class="selectable" data-url="pgs/home/home.html" data-role="ajax" data-nav="home">-->
+			<!--<div class="selected">-->
+				<!--<div class="icon-block">-->
+					<!--<i class="icon-list"></i>-->
+				<!--</div>-->
+				<!--<div class="text-block">-->
+					<!--<p>Home</p>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</li>-->
+		<!--<li class="selectable" data-url="pgs/menu/tests.html" data-role="ajax" data-nav="assignments">-->
+			<!--<div>-->
+				<!--<div class="icon-block">-->
+					<!--<i class="icon-content_large"></i>-->
+				<!--</div>-->
+				<!--<div class="text-block">-->
+					<!--<p>Native Screen Tests bleh</p>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</li>-->
+		<!--<li class="selectable" data-url="pgs/action/tests.html" data-role="ajax" data-nav="assignments">-->
+			<!--<div>-->
+				<!--<div class="icon-block">-->
+					<!--<i class="icon-content_large"></i>-->
+				<!--</div>-->
+				<!--<div class="text-block">-->
+					<!--<p>Action Tests</p>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</li>-->
+		<!--<li class="selectable" data-url="" data-role="debug" data-nav="debug">-->
+			<!--<div>-->
+				<!--<div class="icon-block">-->
+					<!--<i class="icon-signout"></i>-->
+				<!--</div>-->
+				<!--<div class="text-block">-->
+					<!--<p>Debug</p>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</li>-->
+	<!--</ul>-->
+	<opui-menu>
+		<ul class="nav-list">
+			<li each={items} class="selectable" onclick={parent.navigate}>
+				<div class="">
+					<div class="icon-block">
+						<i class="icon-{icon}"></i>
+					</div>
+					<div class="text-block">
+						<p><opui-phrase key="{key}" def="{title}"></opui-phrase></p>
+					</div>
+				</div>
+			</li>
+			<li if="{user_role === 'RM' || user_role === 'GM'}" class="selectable" data-title="Performance Manager" data-url="cellcast://action/openapp/oppm" data-role="cellcast" data-nav="pm">
+				<div>
+					<div class="icon-block">
+						<i class="icon-clipboard"></i>
+					</div>
+					<div class="text-block">
+						<p><opui-phrase key="performance_manager" def="Performance Manager"></opui-phrase></p>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</opui-menu>
+
+</article>

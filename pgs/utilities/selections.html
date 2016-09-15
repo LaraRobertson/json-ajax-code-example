@@ -1,0 +1,92 @@
+<opui-page>
+<article >
+	<div class="row">
+		<div class="columns medium-12">
+			<ul class="list" >
+				<li class="page-heading">
+					<p >{{i18n 'menu_utilities' 'Utilities'}}</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	
+	<div class="row">
+		<div class="columns medium-12">
+			<ul class="list" style="padding-top:25px;padding-bottom:75px">
+				<li class="selectable selectionsPg" data-url="cellcast://menu/devicestatus" data-role="cellcast" data-nav="utilities">
+					<div class="text-block">
+						<p class="title">{{i18n 'utilities_device_status' 'Device Status'}}</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li>
+				<li class="selectable selectionsPg" data-url="cellcast://menu/downloadutility" data-role="cellcast" data-nav="utilities">
+					<div class="text-block">
+						<p class="title">{{i18n 'menu_download_utility' 'Download Utility'}}</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li>
+				<li class="selectable selectionsPg" data-url="cellcast://menu/setup" data-role="cellcast" data-nav="utilities">
+					<div class="text-block">
+						<p class="title">{{i18n 'utilities_settings' 'Settings'}}</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li>
+				<li class="selectable selectionsPg" data-url="cellcast://menu/about" data-role="cellcast" data-nav="utilities">
+					<div class="text-block">
+						<p class="title">{{i18n 'utilities_about' 'About'}}</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li>
+				<li class="selectable selectionsPg" data-url="cellcast://action/updateavatar" data-role="cellcast" data-nav="utilities">
+					<div class="text-block">
+						<p class="title">{{i18n 'settings_updateavatar' 'Update Avatar'}}</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li>
+				<li class="selectable selectionsPg" data-url="cellcast://action/qrcode" data-role="cellcast" data-nav="utilities">
+					<div class="text-block">
+						<p class="title">{{i18n 'qr_code_reader' 'QR Code Reader'}}</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li>
+				<li class="selectable selectionsPg" data-url="cellcast://action/logout" data-role="cellcast" data-nav="utilities">
+					<div class="text-block">
+						<p class="title">{{i18n 'tooltip_logout' 'Logout'}}</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li>
+				
+				<li class="selectable selectionsPg" data-role="debug" data-nav="utilities">
+					<div class="text-block">
+						<p class="title">Debug</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+
+	<script>
+        $( "footer" ).hide();
+    </script>
+</article>
+</opui-page>

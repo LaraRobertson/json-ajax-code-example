@@ -1,0 +1,353 @@
+	<script id="tile_tmpl" type="text/x-handlebars-template">
+		{{#.}}
+		<li>
+			{{#if page}}
+				<div class="gutter tile" data-url="{{page}}" style="background-image: {{background-image}}" data-role="ajax" data-nav="{{navigation-indicator}}">
+			{{/if}}
+			{{#if tags}}
+				<div class="gutter tile" data-tags="{{tags}}" style="background-image: {{background-image}}" data-role="tags" data-title="{{title}}" data-nav="{{navigation-indicator}}">
+			{{/if}}
+				<div class="title-bar">
+					<div class="text-block">
+						<p>{{title}}</p>
+					</div>
+				</div>
+			</div>
+		</li>
+		{{/.}}
+	</script>
+
+	<script id="menu_tmpl" type="text/x-handlebars-template">
+	{{#.}}
+		{{#feature_check feature}}
+			{{#if page}}
+				<li class="selectable" data-title="{{title}}" data-url="{{page}}" data-role="ajax" data-nav="{{navigation-indicator}}">
+			{{/if}}
+			{{#if tags}}
+				<li class="selectable" data-title="{{title}}" data-role="tags" data-tags="{{tags}}">
+			{{/if}}	
+			{{#if scurl}}
+				<li class="selectable" data-title="{{title}}" data-url="{{scurl}}" data-role="cellcast" data-nav="{{navigation-indicator}}">
+			{{/if}}	
+				<div>
+					<div class="icon-block">
+						<i class="icon-{{icon}}"></i>
+					</div>
+					<div class="text-block">
+						<p>{{i18n key title}}</p>
+					</div>
+				</div>
+			</li>
+		{{/feature_check}}
+
+	{{/.}}
+	</script>
+
+	<!-- Games -->
+	<script id="home_scorecard_tmpl" type="text/x-handlebars-template" >
+			<div class="row">
+				<div class="columns medium-12">
+					{{#profile}}
+					<div class="home_avatar_profile columns medium-6" data-role="avatar">
+						<div class="home_avatar_wrapper_profile">
+							{{#ifGtZero avatar_size}} <img src="{{avatar}}"> {{else}} <img src="img/thumbs/user.png"> {{/ifGtZero}} <!-- <img src="{{avatar}}" onerror="this.onerror=null; this.src='img/thumbnails/user.png';"/> -->
+						</div>
+					</div>
+					{{/profile}}
+					<div class="home_points_profile columns medium-6">
+						<p>{{percent_complete}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns medium-12">
+					<!--<div id="rank">
+						<p><span class="my-rank">LEVEL: </span><span class="my-level">{{level.current}}</span></p>
+					</div>-->
+					<div id="home_progressbar_profile">
+						<div class="home_progress-bar" style="width:{{percent_complete}}"></div>
+					</div>
+				    <!-- <div id="home_user-remaining">
+						<div class="home_title-text"><p class="italic">{{earned_points}} earned out of {{game_points}} points</p></div>
+					</div>-->
+				</div>
+			</div>
+	</script>
+
+	<!-- Games -->
+	<script id="profile_scorecard_tmpl" type="text/x-handlebars-template" >
+			<div class="row">
+				<div id="user_profile" class="columns medium-6">
+					{{#profile}}
+					<div class="avatar_profile" data-role="avatar">
+						<div class="avatar_wrapper_profile">
+							{{#ifGtZero avatar_size}} <img src="{{avatar}}"> {{else}} <img src="img/thumbs/user.png"> {{/ifGtZero}} 
+						</div>
+					</div>
+					{{/profile}}
+				</div>
+				<div class="points_profile columns medium-6">
+						<div class="total_points_profile"><p>{{percent_complete}}</p></div>
+				</div>
+			</div>
+			<div class="row">
+				<div id="user_progress_profile" class="columns medium-12">
+				<!--<div id="rank">
+					<p><span class="my-rank">LEVEL: </span><span class="my-level">{{level.current}}</span></p>
+				</div>-->
+				<div id="progressbar_profile">
+					<div class="progress-bar" style="width:{{percent_complete}}"></div>
+				</div>
+			    <div id="user-remaining">
+					<div class="title-text"><p >{{earned_points}} {{i18n 'earned' 'earned out of'}} {{game_points}} {{i18n 'possible_points' 'points'}}</p></div>
+				</div>
+			</div>
+	</script>
+
+	<script id="home_badges_tmpl" type="text/x-handlebars-template">
+
+		<div id="home_badge_container">
+			<ul id="home_badge_list" class='small-block-grid-5'>
+			{{#games}}
+				{{#badges}}
+				<li data-url="pgs/games/badges.html" data-role="ajax">
+					<img src="{{badge_file}}"/>
+				</li>
+				{{/badges}}
+			{{/games}} 
+			</ul>
+		</div>
+
+	</script>
+
+	<!-- Badges -->
+	<script id="badges_tmpl" type="text/x-handlebars-template">
+		{{#games}}
+			<ul class="badgeLayout columns medium-12"  >
+				<h3 class="game_name">{{game_name}}</h3>
+				{{#badges}}
+				<li class="columns medium-3"><img src="{{badge_file}}"/><br/>{{badge_title}}</li>
+				{{/badges}}
+			</ul>
+		{{/games}}
+	</script>
+
+	<script id="legend_tmpl" type="text/x-template">
+		<ul class="<%=name.toLowerCase()%>-legend" style="list-style-type:none;">
+		<% for (var i=0; i<segments.length; i++){%>
+			<li data-id="<%=segments[i].launch_id%>" data-type="skillprofile" data-role="skillprofile-detail">
+				<span style="background-color:<%=segments[i].fillColor%>; display: inline-block; height: 25px; width: 25px; vertical-align: middle; margin-bottom: 10px;"></span>
+				<%if(segments[i].label){%><%=segments[i].label%><%}%>
+			</li>
+		<%}%>
+		</ul>
+	</script>
+
+
+	<div style="display:none;">
+		<!-- Render Assignments  --> 
+		<div id="default_tmpl"> 
+
+			<li class="selectable listings" data-id="0" data-url="" data-scurl="assignment-true" data-role="cellcast"> 
+                <div>
+	                <div class="img-block"> 
+	                    <img src="" data-tmpl="thumb" onerror="this.onerror=null; this.src='img/thumbs/sample.png';"> 
+	                </div> 
+	                <div class="text-block"> 
+	                    <p class="title" data-tmpl="title" ></p> 
+	                   <!--  <p class="desc" data-tmpl="description"></p>  -->
+	                </div> 
+	               
+	                <div class="icon-block"> 
+	                    <i data-tmpl="status-completion"></i> 
+	                    <i data-tmpl="status-test"></i> 
+	                </div> 
+                </div>
+                 <div class="duration">
+                	<p >{{i18n 'description_duration' 'DUR'}}: <span data-tmpl="duration" ></span> {{i18n 'minutes' 'min'}}</p>
+                </div> 
+            </li>     
+     
+		</div>
+
+
+
+
+		<div id="default_tmpl_render"> 
+			{{#.}}
+			<li class="selectable listings" data-id="{{id}}" data-type="{{assignType}}" data-role="launch"> 
+                <div class="img-block"> 
+                    <!--<img src="" data-tmpl="thumb" onerror="this.onerror=null; this.src='img/thumbs/sample.png';"> -->
+					<img src="{{img image}}" alt=""/>
+                </div>
+                <div class="text-block"> 
+                    <p class="title" data-tmpl="title" >{{name}}</p> 
+                    <p class="desc" data-tmpl="description">{{description}}</p> 
+                </div>
+               
+                <div class="icon-block"> 
+                    <i data-tmpl="status-completion" class="icon-{{status this}}"></i> 
+                    <i data-tmpl="status-test"></i> 
+                </div> 
+            </li>     
+     		{{/.}}
+		</div>
+
+		<!-- Render Catalog Items  --> 
+		<div id="catalog_tmpl_old">
+
+			<li class="selectable listings" data-id="0" data-url="" data-tmpl="action"> 
+                <div class="text-block"> 
+                    <p class="title" data-tmpl="title" ></p> 
+                </div>
+                <div class="button-block">
+                	<div> 
+                    	<p data-tmpl="actionTitle"></p>
+                    </div>
+                </div>
+
+                <!-- Determine the searchable information types -->    
+				<span class="hidden" data-tmpl="metatags" style="display:none;"></span>
+				<span class="hidden" data-tmpl="description" style="display:none;"></span>  
+            </li>     
+     
+		</div>
+
+		<div id="catalog_tmpl">
+		{{#.}}
+			{{#assignCheck this}}
+				<li class="selectable listings" data-id="{{id}}" data-type="{{assignType}}" data-role="launch">
+			{{else}}
+				<li class="selectable listings" data-id="{{id}}" data-type="{{selectionType}}" data-role="launch">
+			{{/assignCheck}}
+
+                <div class="text-block"> 
+                    <p class="title" data-tmpl="title" >{{name}}</p> 
+                </div>
+                <div class="button-block">
+                	<div> 
+                    	<p data-tmpl="actionTitle">
+                    		{{#assignCheck this}}
+								{{i18n 'general_launch' 'View'}}
+                    		{{else}}
+								{{i18n 'general_self_assign' 'Assign'}}
+                    		{{/assignCheck}}
+                    	</p>
+                    </div>
+                </div>
+
+                <!-- Determine the searchable information types -->    
+				<span class="hidden" data-tmpl="metatags" style="display:none;"></span>
+				<span class="hidden" data-tmpl="description" style="display:none;"></span>  
+            </li>     
+     	{{/.}}
+		</div>
+		
+
+
+		<div id="onboarding_skillprofile_tmpl"> 
+
+			<li class="selectable selectionsPg" data-id="0" data-role="skillprofile-detail" data-nav="onboarding"> 
+                <!-- <div class="img-block"> 
+                    <img src="" data-tmpl="thumb" onerror="this.onerror=null; this.src='img/thumbs/sample.png';"> 
+                </div>  -->
+                 
+                <div class="text-block"> 
+                    <p class="title" data-tmpl="title" ></p> 
+                  <!--   <p class="desc" data-tmpl="description"></p>  -->
+                </div> 
+                <div class="icon-block"> 
+                	<i class="icon-caret-right" style="font-size: 30px"></i> 
+                </div> 
+            </li>    
+     
+		</div> 
+
+		<!-- Render Activities  --> 
+		<div id="activity_tmpl"> 
+
+			<li class="selectable listings" data-id="0" data-url="" data-scurl="assignment-false" data-role="cellcast">
+                <div class="img-block"> 
+                    <img src="" data-tmpl="thumb" onerror="this.onerror=null; this.src='img/thumbs/sample.png';"> 
+                </div> 
+                <div class="text-block"> 
+                    <p class="title" data-tmpl="title" ></p> 
+                   <!--  <p class="desc" data-tmpl="description"></p>  -->
+                </div> 
+                <div class="icon-block"> 
+                	<p data-tmpl="status" style="padding-right:20px; font-size:13px; font-weight:bold; color: #333;" ></p> 
+                </div> 
+            </li>    
+     
+		</div>
+
+
+		<!-- Render Learning Paths  --> 
+		<div id="skillprofile_tmpl"> 
+
+			<li class="selectable indSP" data-id="0" data-role="skillprofile-detail" data-nav="assignments"> 
+				<span style="display:none;" data-url="" data-scurl="assignment-false"></span> 
+                <div class="img-block"> 
+                    <img src="" data-tmpl="thumb" onerror="this.onerror=null; this.src='lib/img/thumbs/sample.png';"> 
+                </div> 
+                <div class="text-block"> 
+                    <p class="title" data-tmpl="title" style="font-weight:bolder"></p> 
+                    <p class="desc" data-tmpl="description"></p> 
+                </div> 
+                <div class="icon-block"> 
+                	<i class="icon-caret-right"></i> 
+                </div> 
+            </li>    
+     
+		</div> 
+
+		<div id="skillprofile_render_tmpl"> 
+		{{#.}}
+			<li class="selectable indSPprogress" data-id="{{id}}" data-type="skillprofile" data-template='{"activities":"#activity_tmpl", "dflt":"#default_tmpl"}' data-role="skillprofile-detail" data-nav="assignments">  
+                <div>
+	                <div class="img-block"> 
+	                    <img src="{{image}}"> 
+	                </div> 
+	                <div class="text-block"> 
+	                    <p class="title" data-tmpl="title" style="font-weight:bold">{{name}}</p> 
+	                    <p class="desc" data-tmpl="description">{{description}}</p> 
+	                </div> 
+	                <div class="icon-block"> 
+	                	<i class="icon-caret-right"></i> 
+	                </div>
+                </div>
+                <div class="progress-block">
+                	<div class="progress-bar-holder">
+                		<div class="progress-bar" style="width:{{skillProgress this}}">{{skillProgress this}}</div>
+                	</div>
+                </div>
+            </li>    
+     	{{/.}}
+		</div>
+
+		<div id="modal-assign_tmpl">
+			<h2>{{title}}</h2>
+			<p>{{body}}</p>
+			<ul class="found-button-group">
+			{{#each actions}}
+				<li><a href="#" class="found-button small">{{this}}</a></li>
+			{{/each}}
+			</ul>
+			
+		</div> 
+
+		<div id="modal-legend_tmpl">
+			<h2>{{i18n 'legend' 'Legend'}}</h2>
+		      <ul>
+		        <li><i class="icon-not_attempted"></i>  {{i18n 'unattempted' 'Unattempted'}}</li>
+		        <li><i class="icon-incomplete" style="margin-left: -3px;"></i>  {{i18n 'incomplete' 'Incomplete'}}</li>
+		        <li><i class="icon-complete"></i>  {{i18n 'complete' 'Completed'}}</li>
+		        <li><i class="icon-failed"></i>  {{i18n 'failed' 'Failed'}}</li>
+		      </ul>
+		</div>
+
+
+	</div>
+
+
+	

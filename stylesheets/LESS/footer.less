@@ -1,0 +1,90 @@
+/* Footer Styles */
+footer { 
+	position: absolute;
+	right: 0px;
+    // better for mobile? bottom: 114px;
+	bottom: 50px;
+	left: 0px; 
+	height: 109px;
+	width: 100%; 
+	background: @mainBackground; 
+	z-index: 10;
+    margin: 0 auto;
+    max-width: 62.5rem;
+    display:none;
+}
+
+footer.showfooter {
+  display: block;
+}
+
+footer .text-block {
+	position: relative;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	z-index: 9;
+	padding: 10px;
+	display: block;
+}
+
+footer p { 
+	padding-left: 5px; 
+	padding-right: 10px; 
+	font-size: 14px;
+    color: @dark-grey;
+	line-height: 17px;
+    font-weight: 100;
+}
+
+footer a {
+  color: @dark-grey;
+  text-decoration: underline;
+}
+footer img { 
+	margin-right: 20px; }
+
+/* Footer Buttons */
+footer .button { 
+	display: table; 
+	height: 100%; 
+	width: 60px; 
+	text-align: center; 
+	font-size: 25px; 
+	line-height: 25px; 
+	background: @primary; }
+
+footer .button > div { 
+	display: table-cell; 
+	height: 100%; 
+	width: 100%; 
+	color: white; 
+	vertical-align: middle; }
+
+footer .button.left { 
+	float: left; }
+
+footer .button.right { 
+	float: right; }
+
+@media only screen and (max-width: 40em) {
+  footer {
+    bottom: 0;
+  }
+  footer p {
+    font-size: .8em;
+    line-height: 1em;
+	  padding:0;
+  }
+  footer .text-block {
+    padding: 5px;
+  }
+
+} /*small screen navigation - portrait*/
+@media screen and (max-width: 320px)  {
+	footer p {color: #333; font-size:.7em;}
+	footer {height:55px;bottom:50px;}
+
+}
+
+

@@ -1,0 +1,57 @@
+<ul class="list limit-width break alt-bg" >
+		<li class="page-heading">
+			<div class="text-block">
+				<p class="title">Onboarding</p>
+			</div>
+		</li>
+	</ul>
+
+<article style="padding:25px 15px 0 15px">
+	<div class="progress-wheel-container">
+		<i class="icon-ProgressWheel-Icon" style="font-size: 30px;"></i>
+	</div>
+	
+	<ul class="list limit-width break content-container listings" style="padding-top:25px;padding-bottom:75px">
+		<li class="selectable" data-url="pgs/assignments/required.html" data-role="ajax" data-nav="content">
+			<div class="icon-block">
+				<i class="icon-caret-right"></i>
+			</div>
+			<div class="text-block">
+				<p class="title">Required Assignments</p>
+			</div>
+			
+		</li>
+		<li class="selectable" data-url="pgs/assignments/optional.html" data-role="ajax" data-nav="content">
+			<div class="icon-block">
+				<i class="icon-caret-right"></i>
+			</div>
+			<div class="text-block">
+				<p class="title">Optional Assignments</p>
+			</div>
+			
+		</li>
+		<li class="selectable" data-url="pgs/assignments/learningpaths.html" data-role="ajax" data-nav="content">
+			<div class="icon-block">
+				<i class="icon-caret-right"></i>
+			</div>
+			<div class="text-block">
+				<p class="title">Learning Paths</p>
+			</div>
+			
+		</li>
+<!-- 		<li class="selectable" data-url="pgs/assignments/filterlist.html" data-role="ajax" data-nav="assignments">
+			<div class="text-block">
+				<p class="title">Filtered Lists</p>
+			</div>
+			<div class="icon-block">
+				<i class="icon-chevron-right"></i>
+			</div>
+		</li> -->
+	</ul>
+</article>
+
+<script>
+$( ".progress-wheel-container" ).click(function() {
+  $( ".content-container" ).toggleClass( "open" );
+});
+</script>

@@ -1,0 +1,124 @@
+<opui-page back={opts.backurl} node_id={opts.node_id} starting_node_id={opts.starting_node_id}>
+        <article>
+
+            <opui-hierarchy node="{opts.node_id}" back="{back}" starting_node_id="{opts.starting_node_id}">
+                    <div class="row">
+                        <div node="{opts.node_id}" >
+                            <div class="columns medium-12">
+                                <div class="panel page-heading banner banner_stage">
+                                    <p>{ node_title }</p>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="columns medium-12" >
+                            <div style="padding-bottom:300px">
+                                <div id="hierarchyContent">
+                                    <ul>
+                                        <!--<li class="browse-title center">{ node_title }</li>-->
+                                        <li class="breadcrumbs {hidden: node_id == opts.node_id}">
+                                            <opui-back back="{opts.back}">
+
+                                                    <i onclick="{goback}" class="icon-home"></i>
+
+                                            </opui-back>
+
+
+                                            <div each="{breadcrumb }" style="display:inline-block;">
+
+                                                <a class="nowrap" href="#" onclick="{ parent.breadcrumbNav }">{ text }</a>
+                                                <!--<i class="icon-chevron-right"></i>-->
+
+                                            </div>
+                                            <span class="nowrap">{ node_title }</span>
+
+                                        </li>
+                                    </ul>
+                                    <ul class="list">
+
+                                        <li each = "{children}" class="select-node" data-node="{ node_id }">
+                                            <a href="#pgs/hierarchy/stage_hierarchy.html?node_id={node_id}&starting_node_id={starting_node_id}">
+                                                <div class="text-block">
+                                                    <p class="title">{ node_title }</p>
+                                                </div>
+                                                <div class="icon-block">
+                                                    <i class="icon-chevron-right red-bg"></i>
+                                                </div>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="viewWrapper { hidden: items.length != 0 }">
+                                    <ul class="list { hidden: children.length != 0 }">
+                                        <li data-tmpl="no-items">
+                                            <p class="title">There are no items of this type available at this time.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="viewWrapper { hidden: items.length == 0 }">
+                                    <!--<ul>-->
+                                        <!--<li class="view-title center">View Items</li>-->
+                                    <!--</ul>-->
+                                    <ul class="list">
+                                        <li each = "{items}">
+                                            <div class="selectable {hidden: obj_type !== 'game'}" data-id="{ game_id }" data-role="cellcast" data-url="cellcast://menu/gameprofiles/{ game_id }">
+                                                <div class="text-block">
+                                                    <p class="title">{ game_name }</p>
+                                                </div>
+                                                <div class="button-block">
+                                                    <div>
+                                                        <p class="{hidden: status == 'assigned'}">Assign</p>
+                                                        <p class="{hidden: status == 'unassigned'}">Launch</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="selectable {hidden: obj_type !== 'event'}" data-id="{ event_id }">
+                                                <div class="text-block">
+                                                    <p class="title">{ name }</p>
+                                                    <p> { event_description }</p>
+                                                </div>
+
+                                            </div>
+
+                                            <div class=" { hidden: obj_type == 'event' || obj_type == 'game' }">
+
+                                                <div class="selectable { hidden: obj_type == 'skillprofile' }" data-id="{ id }" data-type="{ obj_type }" data-role="launch">
+                                                    <div class="text-block">
+                                                        <p class="title">{ name }</p>
+                                                    </div>
+                                                    <div class="button-block">
+                                                        <div>
+                                                            <p class="{hidden: status == 'assigned'}">Assign</p>
+                                                            <p class="{hidden: status == 'unassigned'}">Launch</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="selectable { hidden: obj_type !== 'skillprofile'  }" data-id="{ id }" data-type="{ obj_type }" data-role="skillprofile-detail">
+                                                    <div class="text-block">
+                                                        <p class="title">{ name }</p>
+                                                    </div>
+                                                    <div class="button-block">
+                                                        <div>
+                                                            <p class="{hidden: status == 'assigned'}">Assign</p>
+                                                            <p class="{hidden: status == 'unassigned'}">Launch</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </opui-hierarchy>
+
+    </article>
+</opui-page>

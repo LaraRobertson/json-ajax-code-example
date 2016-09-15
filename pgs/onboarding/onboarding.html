@@ -1,0 +1,249 @@
+    <article >
+
+       <div class="row">
+        <div class="columns medium-12">
+            <ul class="list" >
+                <li class="page-heading">
+                    <p >{{i18n 'featured' 'Featured'}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+        <div class="row">
+            <div class="progress-wheel-container columns medium-5">
+                <div class="progress-wheel-inner">
+                    <canvas id="chart-area" width="600" height="600"/>
+
+                    <div id="legend"></div>
+                </div>
+            </div> 
+
+            <div class="columns medium-7">
+                <ul class="enhance list indSP" data-collection="assignments" data-subset="skillprofile" data-tags="compliance" data-orderascending="torder" data-rule="exclusive" data-template='{"activities":"#activity_tmpl", "skillprofiles":"#onboarding_skillprofile_tmpl", "dflt":"#default_tmpl_render", "unassigned":"#catalog_tmpl"}'>
+                    <li data-tmpl="no-items">
+                        <div class="text-block">
+                            <p class="title">{{i18n "general_no_items" "There are no items of this type available at this time."}}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    <script>
+        $( "footer" ).hide();
+
+        var polarColors = [
+            {
+                color: 'rgba(52, 12, 54, 1)',
+                background: 'rgba(52, 12, 54, 0.5)',
+                highlight: '#f68f51'
+            },
+            {
+                color: "rgba(136, 209, 202, 1)",
+                background: "rgba(136, 209, 202, 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(238, 99, 33, 1)",
+                background: "rgba(238, 99, 33, 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(178, 24, 40, 1)",
+                background: "rgba(178, 24, 40, 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(186, 52, 73, 1)",
+                background: "rgba(186, 52, 73, 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(90, 35, 78, 1)",
+                background: "rgba(90, 35, 78, 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(48, 54, 97, 1)",
+                background: "rgba(48, 54, 97, 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(342, 75, 60, 1)",
+                background: "rgba(342, 75, 60, 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(172, 6, 52, 1)",
+                background: "rgba(172, 6, 52, 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(184, 67, 100, 1)",
+                background: "rgba(184, 67, 100, 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(225, 58, 40, 1)",
+                background: "rgba(225, 58, 40, 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(129, 50, 76, 1)",
+                background: "rgba(129, 50, 76, 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(341, 75, 80, 1)",
+                background: "rgba(341, 75, 80, 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(269, 75, 23, 1)",
+                background: "rgba(269, 75, 23, 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(224, 35, 88 , 1)",
+                background: "rgba(224, 35, 88 , 0.5)",
+                highlight: "#f68f51"
+            },
+            {
+                color: "rgba(333, 76, 92, 1)",
+                background: "rgba(333, 76, 92, 0.5)",
+                highlight: "#f68f51"
+            }
+        ]
+
+        function getSkillprofileCollectionProgress (collection){
+            var totalItems = 0;
+            var completedItems = 0;
+            collection.forEach(function(item){
+                var t = getSkillprofileProgressValues(item);
+                totalItems  += t.total;
+                completedItems += t.completed;
+            });
+
+
+            return Math.round((completedItems / totalItems)*100);
+        }
+
+
+        function getSkillprofileProgressValues (skillprofile) {
+            // get skillprofile
+            var sp = $.parseJSON(JSON.stringify(skillprofile));
+
+            // get skillprofile items
+            // var totalItems = sp.items.length;
+            var totalItems = 0;
+
+
+            var spCompletedItems = 0;
+
+            sp.items.forEach(function(item){
+                console.log('type: ' + item.type + ' id: ' + item.id + ' mobile? ' + item.mobile)
+//                if(item.mobile){
+                    totalItems++;
+                    var i = assignments.assignments.filter(function(e){
+                        return (e.id === item.id && e.assignType === item.type);
+                    });
+                    // console.log(i[0].status)
+
+                    if(i.length > 0 && (i[0].status < 3 || i[0].sco_status < 3 || i[0].status === 'Completed')){
+                        spCompletedItems++;
+                    }
+//                }
+            })
+
+            var progress = Math.round((spCompletedItems / totalItems) * 100);
+
+            // return progress;
+            return {total: totalItems, completed: spCompletedItems};
+
+        }
+
+
+        function getSkillprofileProgress (skillprofile) {
+            // get skillprofile
+            var sp = $.parseJSON(JSON.stringify(skillprofile));
+
+            // get skillprofile items
+            var totalItems = 0;
+
+
+            var spCompletedItems = 0;
+
+            sp.items.forEach(function(item){
+                console.log('type: ' + item.type + ' id: ' + item.id + ' mobile? ' + item.mobile)
+//                if(item.mobile){
+                    totalItems++;
+                    var i = assignments.assignments.filter(function(e){
+                        return (e.id === item.id && e.assignType === item.type);
+                    });
+                    // console.log(i[0].status)
+
+                    if(i.length > 0 && (i[0].status < 3 || i[0].sco_status < 3 || i[0].status === 'Completed')){
+                        spCompletedItems++;
+                    }
+//                }
+            })
+
+            var progress = Math.round((spCompletedItems / totalItems) * 100);
+
+            return progress;
+
+        }
+
+
+        pageLoad.done(function(){
+
+            var chartData = [];
+            var data = assignments.assignments.filter(function(assignment){
+                return ((assignment.metatags.search('compliance') > -1) && assignment.assignType === 'skillprofile');
+            })
+
+            data = opui.tools.orderByTagAscending(data, 'torder');
+
+            // Prepare chart segments
+            data.forEach(function(e,i){
+                // console.log(i)
+                var segment = {
+                    value: getSkillprofileProgress(e),
+                    highlight: polarColors[i].highlight,
+                    label: e.name,
+                    launch_id: e.id,
+                    background: polarColors[i].background,
+                    color: polarColors[i].color,
+                    innerStrokeColor: 'rgba(0, 0, 0, 0)'
+                }
+                chartData.push(segment);
+            });
+
+            var ctx = document.getElementById("chart-area").getContext("2d");
+            window.myPolarMax = new Chart(ctx).PolarMax(chartData, {
+                responsive:true,
+                scaleShowLabelBackdrop: false,
+                scaleShowLine: false,
+                animation: false,
+                animationEasing: 'easeOutBounce',
+                animateRotate: false,
+                animateScale: false,
+                animationSteps: 10,
+                scaleShowLabels: false,
+                innerRadius: 50,
+                segmentStrokeWidth: 4,
+                legendTemplate : $('#legend_tmpl').html(),
+                tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>%",
+                overallProgress: getSkillprofileCollectionProgress(data)
+            });
+            myPolarMax.update();
+
+            var legend = document.getElementById('legend');
+            legend.innerHTML = myPolarMax.generateLegend();
+
+        });
+
+    </script>
+</article>
+

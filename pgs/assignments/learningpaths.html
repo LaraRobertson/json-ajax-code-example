@@ -1,0 +1,58 @@
+<article >
+	<div class="row">
+		<div class="columns medium-12">
+			<ul class="list" >
+				<li class="page-heading">
+					<p >{{i18n 'assignments_learning_paths' 'Learning Paths'}}</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Enhance: Show All 'Learning Path' Assignments --> 
+	<div class="row">
+		<div class="columns medium-12">
+			<opui-assignments override collection="assignments" subset="skillprofile">
+				<ul class="list">
+					<li each="{item in items}" class="selectable indSPprogress" data-id="{item.id}" data-template='{"activities":"#activity_tmpl", "dflt":"#default_tmpl"}' data-role="skillprofile-detail" data-nav="assignments">
+						<div>
+							<div class="img-block">
+								<img src="{opui.config.imgpath + item.image}">
+							</div>
+							<div class="text-block">
+								<p class="title" data-tmpl="title" style="font-weight:bold">{item.name}</p>
+								<p class="desc" data-tmpl="description">{item.description}</p>
+							</div>
+							<div class="icon-block">
+								<i class="icon-caret-right"></i>
+							</div>
+						</div>
+						<div class="progress-block">
+							<div class="progress-bar-holder">
+								<div class="progress-bar" style="width:50%;">{item.skills.forEach(function(skill)}</div>
+							</div>
+						</div>
+					</li>
+					<li if="{empty}" data-tmpl="no-items">
+						<div class="text-block">
+							<p class="title">There are no items of this type available at this time.</p>
+						</div>
+					</li>
+				</ul>
+			</opui-assignments>
+			<!--<ul class="render list" data-collection="assignments" data-subset="skillprofile" data-template="#skillprofile_render_tmpl"> -->
+				<!--<li data-tmpl="no-items">-->
+					<!--<div class="text-block">-->
+						<!--<p class="title">{{i18n "general_no_items" "There are no items of this type available at this time."}}</p>-->
+					<!--</div>-->
+				<!--</li>-->
+			<!--</ul>-->
+		</div>
+	</div>
+
+
+
+	<script>
+        $( "footer" ).hide();
+    </script>
+</article>

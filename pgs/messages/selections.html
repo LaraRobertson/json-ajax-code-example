@@ -1,0 +1,33 @@
+<opui-page>
+<article >
+  <div class="columns medium-12">
+    <ul class="list" >
+      <li class="page-heading">
+        <p >{{i18n 'menu_messages' 'Messages'}}</p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="columns medium-12">
+    <ul class="list">
+      <li class="selectable selectionsPg" onclick="openLink('announcements'); return true;"  data-nav="messages">
+        <div class="columns small-10">
+          <p class="title">{{i18n 'messages_announcements' 'Announcements'}}</p>
+        </div>
+        <div class="columns small-1">
+          <i class="icon-caret-right"></i>
+        </div>
+      </li>
+      <li class="selectable selectionsPg" onclick="openLink('notifications'); return true;"  data-nav="messages">
+        <div class="columns small-10">
+          <p class="title">{{i18n 'messages_notifications' 'Notifications'}}</p>
+        </div>
+        <div class="columns small-1">
+          <i class="icon-caret-right"></i>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</article>
+</opui-page>

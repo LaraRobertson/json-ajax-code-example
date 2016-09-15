@@ -1,0 +1,72 @@
+<opui-page>
+ <article >
+
+
+	<div class="row">
+		<div class="columns medium-12">
+			<section id="scorecard_profile">
+
+                <opui-games-progress>
+                    <div class="row">
+                        <div id="user_profile" class="columns medium-6">
+                            <div class="avatar_profile" data-role="avatar">
+                                <div class="avatar_wrapper_profile">
+                                    <img src="{avatar}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="points_profile columns medium-6">
+                            <div class="total_points_profile"><p>{percent_complete}</p></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="user_progress_profile" class="columns medium-12">
+                            <!--<div id="rank">
+                                <p><span class="my-rank">LEVEL: </span><span class="my-level">{{level.current}}</span></p>
+                            </div>-->
+                            <div id="progressbar_profile">
+                                <div class="progress-bar" style="width:{percent_complete}"></div>
+                            </div>
+                            <div id="user-remaining">
+                                <div class="title-text"><p >{total_points} {{i18n 'earned' 'earned out of'}} {game_points} {{i18n 'possible_points' 'points'}}</p></div>
+                            </div>
+                        </div>
+
+                </opui-games-progress>
+
+			</section>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="columns medium-12">
+			<ul class="list" >
+				<li class="selectable selectionsPg" onclick="openLink('mygames'); return true;" data-nav="games">
+					<div class="text-block">
+						<p class="title" >{{i18n 'games_list' 'Games List'}}</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li>
+				<li class="selectable selectionsPg" data-url="pgs/games/badges.html" data-role="ajax" data-nav="games">
+					<div class="text-block">
+						<p class="title" >{{i18n 'earned_badges' 'Earned Badges'}}</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li>
+				<!-- <li class="selectable selectionsPg" data-url="cellcast://menu/activitystream" data-role="cellcast" data-nav="games">
+					<div class="text-block">
+						<p class="title" >{{i18n 'games_stream' 'Activity Stream'}}</p>
+					</div>
+					<div class="icon-block">
+						<i class="icon-caret-right"></i>
+					</div>
+				</li> -->
+			</ul>
+		</div>
+	</div>
+ </article>
+</opui-page>

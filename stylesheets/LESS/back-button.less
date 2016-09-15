@@ -1,0 +1,44 @@
+/* Back Button */
+#back-btn { 
+	-moz-box-shadow: 0px 2px 3px -1px rgba(0,0,0,.75); 
+	-webkit-box-shadow: 0px 2px 3px -1px rgba(0,0,0,.75); 
+	box-shadow: 0px 2px 3px -1px rgba(0,0,0,.75); 
+	position: absolute; 
+	display: block; 
+	float: left; 
+	height: 35px; 
+	width: 55px; 
+	left: 0; 
+	background: @primary;
+	-moz-transition: all 0.2s ease; 
+	-o-transition: all 0.2s ease; 
+	-ms-transition: all 0.2s ease; 
+	-webkit-transition: all 0.2s ease; 
+	transition: all 0.2s ease; 
+	z-index: 100; }
+
+#back-btn > div { 
+	display: table; 
+	height: 100%; 
+	width: 100%; }
+
+#back-btn .text-block { padding: 0; }
+
+#back-btn i { padding: 2px 0 0 0; }
+
+#back-btn {
+	bottom: 0;
+	transition: bottom 0.2s ease-out;
+	-webkit-transition: bottom 0.2s ease-out;
+}
+
+#back-btn.show {
+	bottom: 10px;
+	transition: bottom 0.2s ease-in;
+	-webkit-transition: bottom 0.2s ease-in;
+}
+
+/*small screen navigation - portrait*/
+@media screen and (max-width: 320px)  { 
+	#back-btn.show { bottom: 27px;}
+}

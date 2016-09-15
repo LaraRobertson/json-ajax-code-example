@@ -1,0 +1,83 @@
+{
+  	"name": "Example",
+    "utils_path": "../_utils",
+	"branding": "css",
+	"debug": true,
+	"offline": true,
+	"home": "pgs/home/home.html",
+	"style-src": "master.css",
+	"translated": false,
+    "imgpath": "",
+    "launch_target": "opcv",
+	"styles": {
+
+	},
+	"features":{
+		"forums": true,
+		"blogs": true,
+		"my_media": true,
+		"video": true,
+		"photo": true,
+		"audio": true,
+		"gamification": true,
+		"search": true,
+		"messages": true,
+		"hierarchy": true,
+        "events": false
+	},
+	"tiles": [
+		{
+			"background-image": "url(img/tiles/tile-onboarding.png)",
+			"title": "Compliance",
+			"page": "pgs/assignments/selections.html",
+			"navigation-indicator": "compliance"
+		},
+		{
+			"background-image": "url(img/tiles/tile-training.png)",
+			"title": "All Assignments",
+			"page": "pgs/games/profiles.html",
+			"navigation-indicator": "assignments"
+		},
+		{
+			"background-image": "url(img/tiles/tile-communication.png)",
+			"title": "Learner Progress",
+			"page": "pgs/networks/selections.html",
+			"navigation-indicator": "progress"
+		},
+		{
+			"background-image": "url(img/tiles/tile-search.png)",
+			"title": "Videos",
+			"page": "pgs/search/search-term.html",
+			"navigation-indicator": "videos"
+		},
+		{
+			"background-image": "url(img/tiles/tile-search.png)",
+			"title": "News for You",
+			"page": "pgs/search/search-term.html",
+			"navigation-indicator": "search"
+		},
+		{
+			"background-image": "url(img/tiles/tile-search.png)",
+			"title": "Job Aids",
+			"page": "pgs/search/search-results.html",
+			"navigation-indicator": "search"
+		}
+	],
+	"menu":[
+		{
+			"icon": "home",
+			"title": "Home",
+			"page": "pgs/home/home.html",
+			"navigation-indicator": "home",
+			"key": "menu_home"
+		},
+        {
+            "icon": "search",
+            "title": "Search",
+            "page": "pgs/search/search-results.html",
+            "navigation-indicator": "search",
+            "key": "main_search",
+            "feature": "search"
+        }
+	]
+}

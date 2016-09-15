@@ -1,0 +1,42 @@
+<opui-page>
+<article>
+    <div class="row">
+        <div class="columns medium-12">
+            <ul class="list" >
+                <li class="page-heading info">
+                    <p>Orientation</p>
+                    <opui-back back="{back}">
+                        <div class="header-back" onclick="{goback}">
+                            <div class="icon-block"><i class="icon-chevron-left"></i></div>
+                            <div>Back</div>
+                        </div>
+                    </opui-back>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="columns medium-12">
+            <ul class="list" style="padding-top:25px;">
+                <li class="selectable listings" onclick="riot.route('pgs/assignments/tags.html?title=Orientation > General&tags=General-App_Tips&backurl=pgs/orientation/selections.html')"; return false;" data-nav="Additional Resources">
+                <div class="text-block">
+                    <p class="title">General</p>
+                </div>
+                <div class="icon-block">
+                    <i class="icon-chevron-right"></i>
+                </div>
+                </li>
+                <li class="selectable listings" onclick="riot.route('pgs/assignments/tags.html?title=Orientation > OP Testing&tags=OP Testing&backurl=pgs/orientation/selections.html')"; return false;" data-nav="Additional Resources">
+                <div class="text-block">
+                    <p class="title">OP Testing</p>
+                </div>
+                <div class="icon-block">
+                    <i class="icon-chevron-right"></i>
+                </div>
+                </li>
+        </div>
+    </div>
+</article>
+</opui-page>

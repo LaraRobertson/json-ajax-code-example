@@ -1,0 +1,9 @@
+*.swp
+*.swo
+.DS_Store
+.sublime*
+.idea/*
+Icon
+Icon_
+Icon?
+Desktop.ini

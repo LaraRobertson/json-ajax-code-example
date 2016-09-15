@@ -1,0 +1,30 @@
+/* Image Block */
+.img-block { 
+	//display: table-cell;
+	position: relative; 
+	width: 8%;
+	height: auto;
+	vertical-align: middle; 
+	z-index: 10; 
+	padding: 0;
+    display:inline-block;
+    margin: 0 1%;
+}
+
+.img-block img { 
+	display: block; 
+	//max-height: 56px;
+	//max-width: 75px;
+	border: 0; 
+	//padding: 0 0 0 15px;
+    margin:0;
+
+}
+
+
+@media only screen and (max-width: 40em) {
+	/* Styles */
+  .img-block, .img-block img {
+		display: none;
+	}
+}

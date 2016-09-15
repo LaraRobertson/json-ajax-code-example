@@ -1,0 +1,31 @@
+<article>
+
+    <div class="detail-top-wrapper">
+        <div class="detail-container">
+            <div class="img-block"> 
+                <img src="{{img image}}" data-tmpl="thumb" onerror="this.onerror=null; this.src='img/thumbs/sample.png';"> 
+            </div> 
+            <p class="title" data-tmpl="title" style="font-weight:bold">{{name}}</p> 
+            <div class="row">
+                <!-- <div class="col-3" style="text-transform: capitalize;"><strong>Type:</strong> {{assignType}}</div> -->
+                <div class="col-3"><strong>Duration:</strong> {{duration}}</div>
+                <div class="col-3 render" data-template="#rating_tmpl">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="detail-btm-wrapper">
+        <div class="detail-container">
+            <h2>Description:</h2>
+            <h4>{{description}}</h4>
+            <div class="button" data-role="launch" data-type="{{assignType}}" data-id="{{id}}">
+                <p>Start</p>
+            </div>
+        </div>
+    </div>
+    
+<script>
+        $( "footer" ).hide();
+    </script>
+    
+</article>

@@ -1,0 +1,50 @@
+/* Apply filter for incomplete, pending, and complete assignments */
+
+ul#filter-buttons {
+    margin-bottom: 20px;
+}
+ul#filter-buttons  li {
+  position: relative;
+  float:left;
+  width:32%;
+  margin-right:2%;
+}
+ul#filter-buttons li div  {
+    font-size: 1em;
+    padding: 3% 0;
+    background-color: @light-grey;
+    color: #231F20;
+    text-align: center;
+    pointer-events: none;
+}
+ul#filter-buttons li.active div {
+    background-color: @selected;
+}
+ul#filter-buttons i {
+  pointer-events: none;
+  margin-right:10px;
+  color:#231F20;
+}
+ul#filter-buttons li:last-child {
+    float: left;
+    margin-right:0;
+}
+// foundation override for tab-title
+.tabs dd > a, .tabs .tab-title > a {
+  color:#231F20;
+  font-family: 'Calibri', 'Roboto', sans-serif;
+  padding: 0;
+}
+/*#filter-buttons ul li i {
+    margin-right: 5px;
+}*/
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 599px) {
+    /* Styles */
+  ul#filter-buttons li {
+        padding: 3% 0;
+        font-size: .8em;
+    }
+
+}
